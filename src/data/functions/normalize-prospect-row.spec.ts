@@ -1,6 +1,6 @@
 import { Factory } from 'rosie';
-import { ProspectFirmRow } from '../../firms/types/firm-profile.types';
 import { normalizeProspectRow } from './normalize-prospect-row.function';
+import { ProspectFirmRow } from '../../firms/types/prospect-firm-row.interface';
 
 const ProspectFirmRowFactory = new Factory<ProspectFirmRow>()
   .attr('firm_name', 'Cellino Law')

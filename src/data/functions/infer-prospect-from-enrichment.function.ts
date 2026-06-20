@@ -1,4 +1,5 @@
-import { EnrichmentSignalRow, ProspectFirmRow } from '../../firms/types/firm-profile.types';
+import { ProspectFirmRow } from '../../firms/types/prospect-firm-row.interface';
+import { EnrichmentSignalRow } from '../../firms/types/enrichment-signal-row.interface';
 
 export function inferProspectFromEnrichment(row: EnrichmentSignalRow): ProspectFirmRow {
   const techStack = row.tech_stack.toLowerCase();

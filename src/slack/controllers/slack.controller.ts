@@ -11,7 +11,7 @@ import { Request } from 'express';
 import { SlackSignatureService } from '../services/slack-signature.service';
 import { SlackResponseService } from '../services/slack-response.service';
 import { PageGenerationService } from '../../pages/services/page-generation.service';
-import { FirmNotFoundError } from '../../firms/types/firm-profile.types';
+import { FirmNotFoundError } from '../../firms/types/firm-not-found.error';
 
 interface SlackSlashCommandPayload {
   command?: string;

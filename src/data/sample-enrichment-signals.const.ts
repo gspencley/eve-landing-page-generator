@@ -1,4 +1,4 @@
-import { EnrichmentSignalRow } from '../firms/types/firm-profile.types';
+import { EnrichmentSignalRow } from '../firms/types/enrichment-signal-row.interface';
 
 export const SAMPLE_ENRICHMENT_SIGNALS: EnrichmentSignalRow[] = [
   {

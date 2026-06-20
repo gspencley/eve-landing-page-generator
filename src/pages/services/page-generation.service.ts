@@ -7,7 +7,7 @@ import { PageEntity } from '../entities/page.entity';
 import { PageEventEntity } from '../entities/page-event.entity';
 import { PageEventType } from '../types/page-event-type.enum';
 import { FirmLookupService } from '../../firms/services/firm-lookup.service';
-import { FirmNotFoundError } from '../../firms/types/firm-profile.types';
+import { FirmNotFoundError } from '../../firms/types/firm-not-found.error';
 import { AssetMatcherService } from '../../assets/services/asset-matcher.service';
 import { normalizeFirmName } from '../../data/functions/normalize-firm-name.function';
 import { EnvConfig } from '../../config/env.validation';

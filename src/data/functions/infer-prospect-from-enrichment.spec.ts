@@ -1,6 +1,6 @@
 import { Factory } from 'rosie';
-import { EnrichmentSignalRow } from '../../firms/types/firm-profile.types';
 import { inferProspectFromEnrichment } from './infer-prospect-from-enrichment.function';
+import { EnrichmentSignalRow } from '../../firms/types/enrichment-signal-row.interface';
 
 const EnrichmentSignalRowFactory = new Factory<EnrichmentSignalRow>()
   .attr('firm_name', 'Cellino Law')

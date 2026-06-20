@@ -1,4 +1,4 @@
-import { InteractionHistoryRow } from '../firms/types/firm-profile.types';
+import { InteractionHistoryRow } from '../firms/types/interaction-history-row.interface';
 
 export const SAMPLE_INTERACTION_HISTORY: InteractionHistoryRow[] = [
   {

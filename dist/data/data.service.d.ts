@@ -1,5 +1,7 @@
 import { OnModuleInit } from '@nestjs/common';
-import { EnrichmentSignalRow, InteractionHistoryRow, ProspectFirmRow } from '../firms/types/firm-profile.types';
+import { ProspectFirmRow } from '../firms/types/prospect-firm-row.interface';
+import { EnrichmentSignalRow } from '../firms/types/enrichment-signal-row.interface';
+import { InteractionHistoryRow } from '../firms/types/interaction-history-row.interface';
 export declare class DataService implements OnModuleInit {
     private readonly logger;
     private prospectFirms;

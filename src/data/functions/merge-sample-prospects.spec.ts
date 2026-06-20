@@ -1,7 +1,7 @@
 import { Factory } from 'rosie';
-import { ProspectFirmRow } from '../../firms/types/firm-profile.types';
 import { SAMPLE_PROSPECT_FIRMS } from '../sample-prospect-firms.const';
 import { mergeSampleProspects } from './merge-sample-prospects.function';
+import { ProspectFirmRow } from '../../firms/types/prospect-firm-row.interface';
 
 const ProspectFirmRowFactory = new Factory<ProspectFirmRow>()
   .attr('firm_name', 'Unique Prospect Firm')

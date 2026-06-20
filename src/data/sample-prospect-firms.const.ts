@@ -1,4 +1,4 @@
-import { ProspectFirmRow } from '../firms/types/firm-profile.types';
+import { ProspectFirmRow } from '../firms/types/prospect-firm-row.interface';
 
 export const SAMPLE_PROSPECT_FIRMS: ProspectFirmRow[] = [
   {

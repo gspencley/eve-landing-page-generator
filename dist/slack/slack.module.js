@@ -9,8 +9,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SlackModule = void 0;
 const common_1 = require("@nestjs/common");
 const slack_controller_1 = require("./controllers/slack.controller");
-const slack_signature_service_1 = require("./services/slack-signature.service");
-const slack_response_service_1 = require("./services/slack-response.service");
+const slack_signature_verification_service_1 = require("./services/slack-signature-verification.service");
+const slack_response_builder_service_1 = require("./services/slack-response-builder.service");
 const pages_module_1 = require("../pages/pages.module");
 let SlackModule = class SlackModule {
 };
@@ -19,7 +19,7 @@ exports.SlackModule = SlackModule = __decorate([
     (0, common_1.Module)({
         imports: [pages_module_1.PagesModule],
         controllers: [slack_controller_1.SlackController],
-        providers: [slack_signature_service_1.SlackSignatureService, slack_response_service_1.SlackResponseService],
+        providers: [slack_signature_verification_service_1.SlackSignatureVerificationService, slack_response_builder_service_1.SlackResponseBuilderService],
     })
 ], SlackModule);
 //# sourceMappingURL=slack.module.js.map

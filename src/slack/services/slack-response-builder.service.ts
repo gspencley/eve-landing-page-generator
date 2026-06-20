@@ -6,8 +6,8 @@ export interface SlackImmediateResponse {
 }
 
 @Injectable()
-export class SlackResponseService {
-  private readonly logger = new Logger(SlackResponseService.name);
+export class SlackResponseBuilderService {
+  private readonly logger = new Logger(SlackResponseBuilderService.name);
 
   buildImmediateAck(message: string): SlackImmediateResponse {
     return {

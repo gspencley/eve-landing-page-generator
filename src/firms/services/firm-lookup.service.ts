@@ -3,13 +3,16 @@ import { DataService } from '../../data/data.service';
 import { normalizeFirmName } from '../../data/functions/normalize-firm-name.function';
 import { FirmNotFoundError } from '../types/firm-not-found.error';
 import { doFirmNamesMatch } from '../../data/functions/do-firm-names-match.function';
-import { ProspectFirmRow } from '../types/prospect-firm-row.interface';
-import { FirmProfile } from '../types/firm-profile.interface';
 import { FirmLookupResult } from '../types/firm-lookup-result.interface';
+import { FirmProfileBuilderService } from './firm-profile-builder.service';
+import { suggestSimilar } from '../functions/suggest-similar.function';
 
 @Injectable()
 export class FirmLookupService {
-  constructor(private readonly dataService: DataService) {}
+  constructor(
+    private readonly dataService: DataService,
+    private readonly firmProfileBuilderService: FirmProfileBuilderService,
+  ) {}
 
   findFirm(query: string): FirmLookupResult {
     const trimmed = query.trim();
@@ -24,7 +27,7 @@ export class FirmLookupService {
 
     if (exact) {
       return {
-        profile: this.buildProfile(exact),
+        profile: this.firmProfileBuilderService.buildProfile(exact),
         matchedName: exact.firm_name,
         matchConfidence: 'exact',
       };
@@ -34,7 +37,7 @@ export class FirmLookupService {
 
     if (fuzzyMatches.length === 1) {
       return {
-        profile: this.buildProfile(fuzzyMatches[0]),
+        profile: this.firmProfileBuilderService.buildProfile(fuzzyMatches[0]),
         matchedName: fuzzyMatches[0].firm_name,
         matchConfidence: 'fuzzy',
       };
@@ -45,68 +48,10 @@ export class FirmLookupService {
       throw new FirmNotFoundError(trimmed, suggestions);
     }
 
-    const suggestions = this.suggestSimilar(trimmed, prospects);
-    throw new FirmNotFoundError(trimmed, suggestions);
+    throw new FirmNotFoundError(trimmed, suggestSimilar(trimmed, prospects));
   }
 
   listFirmNames(): string[] {
     return this.dataService.getProspectFirms().map((row) => row.firm_name);
-  }
-
-  private buildProfile(row: ProspectFirmRow): FirmProfile {
-    const enrichment =
-      this.dataService
-        .getEnrichmentSignals()
-        .find((signal) => doFirmNamesMatch(row.firm_name, signal.firm_name)) ?? null;
-
-    const interactions = this.dataService
-      .getInteractionHistory()
-      .filter((interaction) => doFirmNamesMatch(row.firm_name, interaction.firm_name));
-
-    const previouslySentAssetIds = [
-      ...new Set(
-        interactions
-          .map((interaction) => interaction.asset_sent?.trim())
-          .filter((assetId): assetId is string => Boolean(assetId)),
-      ),
-    ];
-
-    const bouncedInteractionCount = interactions.filter(
-      (interaction) => interaction.event_type.toLowerCase() === 'bounced',
-    ).length;
-
-    return {
-      firmName: row.firm_name,
-      industry: row.industry,
-      practiceArea: row.practice_area,
-      firmSize: row.firm_size,
-      intakeMethod: row.intake_method,
-      painPoints: row.pain_points
-        .split(/[;,]/)
-        .map((point) => point.trim())
-        .filter(Boolean),
-      caseManagementSystem: row.case_management_system,
-      leadStatus: row.lead_status,
-      enrichment,
-      interactions,
-      previouslySentAssetIds,
-      bouncedInteractionCount,
-    };
-  }
-
-  private suggestSimilar(query: string, prospects: ProspectFirmRow[]): string[] {
-    const normalizedQuery = normalizeFirmName(query);
-    const queryTokens = normalizedQuery.split(' ').filter(Boolean);
-
-    return prospects
-      .map((row) => {
-        const tokens = normalizeFirmName(row.firm_name).split(' ').filter(Boolean);
-        const score = queryTokens.filter((token) => tokens.includes(token)).length;
-        return { name: row.firm_name, score };
-      })
-      .filter((entry) => entry.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 5)
-      .map((entry) => entry.name);
   }
 }

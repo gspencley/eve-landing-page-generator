@@ -16,6 +16,7 @@ const landing_page_controller_1 = require("./controllers/landing-page.controller
 const analytics_controller_1 = require("./controllers/analytics.controller");
 const firms_module_1 = require("../firms/firms.module");
 const assets_module_1 = require("../assets/assets.module");
+const landing_page_view_service_1 = require("./services/landing-page-view.service");
 let PagesModule = class PagesModule {
 };
 exports.PagesModule = PagesModule;
@@ -23,7 +24,7 @@ exports.PagesModule = PagesModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([page_entity_1.PageEntity, page_event_entity_1.PageEventEntity]), firms_module_1.FirmsModule, assets_module_1.AssetsModule],
         controllers: [landing_page_controller_1.LandingPageController, analytics_controller_1.AnalyticsController],
-        providers: [page_generation_service_1.PageGenerationService],
+        providers: [page_generation_service_1.PageGenerationService, landing_page_view_service_1.LandingPageViewService],
         exports: [page_generation_service_1.PageGenerationService],
     })
 ], PagesModule);

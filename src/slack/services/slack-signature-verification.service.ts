@@ -4,7 +4,7 @@ import { createHmac, timingSafeEqual } from 'crypto';
 import { EnvConfig } from '../../config/env.validation';
 
 @Injectable()
-export class SlackSignatureService {
+export class SlackSignatureVerificationService {
   constructor(private readonly configService: ConfigService<EnvConfig, true>) {}
 
   verify(rawBody: Buffer, timestamp: string | undefined, signature: string | undefined): void {

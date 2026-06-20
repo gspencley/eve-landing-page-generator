@@ -7,28 +7,18 @@ import {
   Post,
   Req,
 } from '@nestjs/common';
-import { Request } from 'express';
-import { SlackSignatureService } from '../services/slack-signature.service';
-import { SlackResponseService } from '../services/slack-response.service';
+import { SlackSignatureVerificationService } from '../services/slack-signature-verification.service';
+import { SlackResponseBuilderService } from '../services/slack-response-builder.service';
 import { PageGenerationService } from '../../pages/services/page-generation.service';
 import { FirmNotFoundError } from '../../firms/types/firm-not-found.error';
-
-interface SlackSlashCommandPayload {
-  command?: string;
-  text?: string;
-  response_url?: string;
-  user_name?: string;
-}
-
-interface RawBodyRequest extends Request {
-  rawBody?: Buffer;
-}
+import { SlackSlashCommandPayload } from '../types/slack-slash-command-payload.interface';
+import { RawBodyRequest } from '../../types/raw-body-request.interface';
 
 @Controller('slack')
 export class SlackController {
   constructor(
-    private readonly slackSignatureService: SlackSignatureService,
-    private readonly slackResponseService: SlackResponseService,
+    private readonly slackSignatureService: SlackSignatureVerificationService,
+    private readonly slackResponseService: SlackResponseBuilderService,
     private readonly pageGenerationService: PageGenerationService,
   ) {}
 

@@ -10,13 +10,14 @@ exports.FirmsModule = void 0;
 const common_1 = require("@nestjs/common");
 const data_module_1 = require("../data/data.module");
 const firm_lookup_service_1 = require("./services/firm-lookup.service");
+const firm_profile_builder_service_1 = require("./services/firm-profile-builder.service");
 let FirmsModule = class FirmsModule {
 };
 exports.FirmsModule = FirmsModule;
 exports.FirmsModule = FirmsModule = __decorate([
     (0, common_1.Module)({
         imports: [data_module_1.DataModule],
-        providers: [firm_lookup_service_1.FirmLookupService],
+        providers: [firm_profile_builder_service_1.FirmProfileBuilderService, firm_lookup_service_1.FirmLookupService],
         exports: [firm_lookup_service_1.FirmLookupService],
     })
 ], FirmsModule);

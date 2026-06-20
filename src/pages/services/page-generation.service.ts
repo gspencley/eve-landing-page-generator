@@ -9,7 +9,7 @@ import { PageEventType } from '../types/page-event-type.enum';
 import { FirmLookupService } from '../../firms/services/firm-lookup.service';
 import { FirmNotFoundError } from '../../firms/types/firm-profile.types';
 import { AssetMatcherService } from '../../assets/services/asset-matcher.service';
-import { normalizeFirmName } from '../../data/normalize-firm-name';
+import { normalizeFirmName } from '../../data/functions/normalize-firm-name.function';
 import { EnvConfig } from '../../config/env.validation';
 
 @Injectable()

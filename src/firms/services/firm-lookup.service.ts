@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { DataService } from '../../data/data.service';
-import { firmNamesMatch, normalizeFirmName } from '../../data/normalize-firm-name';
+import { normalizeFirmName } from '../../data/functions/normalize-firm-name.function';
 import {
   FirmLookupResult,
   FirmNotFoundError,
   FirmProfile,
   ProspectFirmRow,
 } from '../types/firm-profile.types';
+import { doFirmNamesMatch } from '../../data/functions/do-firm-names-match.function';
 
 @Injectable()
 export class FirmLookupService {
@@ -31,7 +32,7 @@ export class FirmLookupService {
       };
     }
 
-    const fuzzyMatches = prospects.filter((row) => firmNamesMatch(trimmed, row.firm_name));
+    const fuzzyMatches = prospects.filter((row) => doFirmNamesMatch(trimmed, row.firm_name));
 
     if (fuzzyMatches.length === 1) {
       return {
@@ -58,11 +59,11 @@ export class FirmLookupService {
     const enrichment =
       this.dataService
         .getEnrichmentSignals()
-        .find((signal) => firmNamesMatch(row.firm_name, signal.firm_name)) ?? null;
+        .find((signal) => doFirmNamesMatch(row.firm_name, signal.firm_name)) ?? null;
 
     const interactions = this.dataService
       .getInteractionHistory()
-      .filter((interaction) => firmNamesMatch(row.firm_name, interaction.firm_name));
+      .filter((interaction) => doFirmNamesMatch(row.firm_name, interaction.firm_name));
 
     const previouslySentAssetIds = [
       ...new Set(

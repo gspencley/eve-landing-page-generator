@@ -1,0 +1,184 @@
+interaction_id,firm_name,rep_name,channel,subject,event_type,event_date,sequence_step,template_id,asset_sent
+INT-1035,Ben Crump Law,Naga Vadrevu,phone,Can Eve help with case evaluation?,bounced,2025-01-23,2,tmpl-breakup-01,
+INT-1146,The Dominguez Firm,Naga Vadrevu,phone,Can Eve help with after-hours calls?,bounced,2025-02-13,1,tmpl-pain-point-01,
+INT-1101,Nace Law Grou.,Marcus Rivera,linkedin,Nace Law Grou. — worth a quick conversation?,replied,2025-02-02,4,tmpl-cold-intro-01,
+INT-1134,Patel Law PC,Naga Vadrevu,email,Re: AI for plaintiff firms,bounced,2025-04-18,2,tmpl-case-study-01,EVE-OP-001
+INT-1119,Atlanta Personal Injury Law Group - Gore,Jamie Eggertsen,email,Ideas for Atlanta Personal Injury Law Gr's intake process,sent,2025-01-19,1,tmpl-pain-point-01,
+INT-1048,Raphaelson and Levine,Jamie Eggertsen,email,Re: demand drafting for trucking cases,bounced,2025-01-04,1,tmpl-cold-intro-01,
+INT-1181,Ironside Litigation Group,Naga Vadrevu,email,Re: demand drafting for PI,sent,2025-04-18,2,tmpl-cold-intro-01,
+INT-1124,Rosenfeld Injury Lawyers,Marcus Rivera,linkedin,Following up on Eve,bounced,2025-01-08,1,tmpl-referral-01,
+INT-1014,Brown and Crouppen,Marcus Rivera,email,Ideas for Brown and Crouppen's intake process,bounced,2025-01-26,3,tmpl-cold-intro-01,
+INT-1061,Anidjar Levine,Sarah Chen,email,Breakup: last note from me,opened,2025-02-26,2,tmpl-cold-intro-02,
+INT-1173,Corboy & Demetrio,Jamie Eggertsen,phone,Saw your recent growth,sent,2025-01-10,1,tmpl-pain-point-01,
+INT-1032,Rosen Injury Lawyers,Naga Vadrevu,email,Quick question about trucking cases,opened,2025-05-07,4,tmpl-cold-intro-02,EVE-CS-001
+INT-1062,Anidjar Levine,Sarah Chen,linkedin,Can Eve help with case evaluation?,bounced,2025-03-07,3,tmpl-pain-point-01,
+INT-1156,Florin Roebig,Marcus Rivera,email,3 ways firms like Florin Roebig use AI,clicked,2025-04-12,5,tmpl-breakup-01,
+INT-1044,Cellino Law,Sarah Chen,phone,Re: demand drafting for workers comp,bounced,2025-03-13,3,tmpl-referral-01,
+INT-1179,Westbrook Caldwell LLP,Jamie Eggertsen,email,Quick question about PI,bounced,2025-04-26,1,tmpl-cold-intro-01,
+INT-1175,Corboy & Demetrio,Jamie Eggertsen,email,Quick question about nursing home cases,opened,2025-01-28,3,tmpl-breakup-01,EVE-OP-006
+INT-1144,Hershey,Jamie Eggertsen,phone,Can Eve help with after-hours calls?,sent,2025-03-04,3,tmpl-breakup-01,
+INT-1064,Anidjar & Levine,Sarah Chen,linkedin,Re: demand drafting for med mal,opened,2025-03-15,5,tmpl-case-study-01,
+INT-1063,Anidjar & Levine,Sarah Chen,email,For Anidjar — cutting review time by 75%,replied,2025-03-25,4,tmpl-roi-01,
+INT-1093,Rosenberg Minc Falkoff & Wolff,Sarah Chen,email,Rosenberg — one more thing,sent,2025-03-20,1,tmpl-referral-01,
+INT-1030,Rosen Injury Lawyers,Naga Vadrevu,email,Rosen — one more thing,opened,2025-05-01,2,tmpl-referral-01,EVE-OP-005
+INT-1004,Ketterman Rowland & Westlund,Marcus Rivera,email,Following up on Eve,opened,2025-04-07,4,tmpl-pain-point-01,EVE-OP-005
+INT-1082,JS Farrin,Naga Vadrevu,email,Quick question about trucking cases,opened,2025-05-04,3,tmpl-referral-01,EVE-OP-002
+INT-1142,Hershey Law,Jamie Eggertsen,email,Hershey Law — worth a quick conversation?,bounced,2025-02-14,1,tmpl-referral-01,
+INT-1132,Carey Leisure Carn.,Marcus Rivera,linkedin,Saw your recent case win,bounced,2025-03-17,2,tmpl-referral-01,
+INT-1049,Raphaelson & Levi.,Jamie Eggertsen,email,Can Eve help with after-hours calls?,opened,2025-01-14,2,tmpl-roi-01,
+INT-1136,Patel Law PC,Naga Vadrevu,email,3 ways firms like Patel Law PC use AI,bounced,2025-04-27,4,tmpl-referral-01,
+INT-1037,Crump Law,Naga Vadrevu,email,Re: AI for plaintiff firms,replied,2025-02-09,4,tmpl-cold-intro-01,
+INT-1058,Newsome Melton,Sarah Chen,email,For Newsome — cutting review time by 75%,sent,2025-03-14,2,tmpl-pain-point-01,
+INT-1166,Davis Law Group,Marcus Rivera,email,Ideas for Davis Law Group's intake process,sent,2025-03-26,1,tmpl-case-study-01,
+INT-1176,Phantom Legal Associates,Sarah Chen,linkedin,Phantom Legal Associates — worth a quick conversation?,sent,2025-02-26,1,tmpl-cold-intro-01,
+INT-1140,Gordon and Partners,Sarah Chen,phone,Saw your recent hiring spree,bounced,2025-03-11,1,tmpl-cold-intro-02,
+INT-1172,Pond Lehocky Gior.,Jamie Eggertsen,phone,Re: AI for plaintiff firms,sent,2025-01-14,2,tmpl-breakup-01,
+INT-1055,Hupy & Abraham,Jamie Eggertsen,linkedin,Re: AI for plaintiff firms,bounced,2025-02-24,3,tmpl-auditor-01,
+INT-1122,The Lovely Law Firm,Marcus Rivera,linkedin,Saw your recent case win,opened,2025-01-26,2,tmpl-auditor-01,
+INT-1075,Buckfire & Bukfire,Marcus Rivera,phone,Ideas for Buckfire & Bukfire's intake process,bounced,2025-03-03,1,tmpl-roi-01,
+INT-1120,Craig Swapp & Asso.,Sarah Chen,email,For Craig — cutting review time by 75%,sent,2025-02-09,1,tmpl-case-study-01,
+INT-1079,Buckfire & Buckfire,Marcus Rivera,email,Re: AI for plaintiff firms,opened,2025-03-23,5,tmpl-roi-01,
+INT-1128,The Earley Group,Jamie Eggertsen,email,Re: AI for plaintiff firms,bounced,2025-03-03,2,tmpl-cold-intro-02,EVE-OP-001
+INT-1141,Gordon and Partners,Sarah Chen,email,3 ways firms like Gordon and Partners use AI,sent,2025-03-15,2,tmpl-breakup-01,
+INT-1167,Davis Law Group,Marcus Rivera,email,3 ways firms like Davis Law Group use AI,opened,2025-04-08,2,tmpl-pain-point-01,
+INT-1099,Nace Law Group,Marcus Rivera,email,Nace — one more thing,opened,2025-01-26,2,tmpl-intake-01,EVE-HB-001
+INT-1157,Fieger Law,Jamie Eggertsen,linkedin,3 ways firms like Fieger Law use AI,sent,2025-03-20,1,tmpl-case-study-01,
+INT-1043,Cellino Law,Sarah Chen,phone,Quick question about nursing home cases,sent,2025-03-03,2,tmpl-breakup-01,
+INT-1153,Florin Roebig,Marcus Rivera,phone,Breakup: last note from me,opened,2025-04-04,2,tmpl-auditor-01,
+INT-1104,Schmidt Sethi & Akmajian,Jamie Eggertsen,email,Following up on Eve,opened,2025-01-26,2,tmpl-case-study-01,EVE-CS-003
+INT-1139,Sibley Dolman Gipe.,Sarah Chen,email,Saw your recent award,sent,2025-03-16,2,tmpl-cold-intro-02,EVE-HB-002
+INT-1094,Rosenberg Minc Falkoff & Wolff,Sarah Chen,email,Re: AI for plaintiff firms,opened,2025-04-02,2,tmpl-breakup-01,EVE-BP-001
+INT-1046,Freeburg & Gran.,Marcus Rivera,email,Re: AI for plaintiff firms,opened,2025-02-20,2,tmpl-case-study-01,
+INT-1102,Nace Law Group,Marcus Rivera,email,Following up on Eve,clicked,2025-02-02,5,tmpl-intake-01,EVE-CS-002
+INT-1164,Staver Accident Injury Lawy.,Sarah Chen,phone,Re: AI for plaintiff firms,opened,2025-04-14,2,tmpl-intake-01,
+INT-1084,Law Offices of James Scott Farrin,Naga Vadrevu,email,Re: AI for plaintiff firms,opened,2025-06-04,5,tmpl-roi-01,
+INT-1180,Ironside Litigation Group,Naga Vadrevu,phone,Quick question about PI,bounced,2025-03-19,1,tmpl-cold-intro-01,
+INT-1029,Rosen Injury Lawyers,Naga Vadrevu,linkedin,For Rosen — cutting review time by 75%,bounced,2025-04-20,1,tmpl-intake-01,
+INT-1067,Frontier Law Center,Marcus Rivera,email,Re: AI for plaintiff firms,sent,2025-01-05,1,tmpl-cold-intro-02,
+INT-1076,Buckfire & Buckfire,Marcus Rivera,email,Buckfire & Buckfire + Eve: a good fit?,sent,2025-03-06,2,tmpl-cold-intro-02,EVE-CS-001
+INT-1155,Florin Roebig,Marcus Rivera,linkedin,Re: demand drafting for med mal,opened,2025-04-14,4,tmpl-roi-01,
+INT-1072,Merman Law Firm,Marcus Rivera,email,Saw your recent expansion,sent,2025-04-23,2,tmpl-roi-01,EVE-CS-003
+INT-1053,Hupy & Abra.,Jamie Eggertsen,email,Hupy & Abra. — worth a quick conversation?,sent,2025-02-06,1,tmpl-auditor-01,
+INT-1054,Hupy & Abra.,Jamie Eggertsen,email,Following up on Eve,opened,2025-02-12,2,tmpl-referral-01,EVE-OP-004
+INT-1092,Smith Clinesmith,Naga Vadrevu,email,Quick question about med mal,bounced,2025-02-12,3,tmpl-pain-point-01,
+INT-1110,Munley Law,Naga Vadrevu,email,Quick question about trucking cases,opened,2025-04-15,2,tmpl-breakup-01,
+INT-1143,Hersey Law,Jamie Eggertsen,email,Can Eve help with after-hours calls?,sent,2025-02-18,2,tmpl-cold-intro-02,EVE-OP-005
+INT-1056,Hupy and Abraham,Jamie Eggertsen,linkedin,Hupy and Abraham + Eve: a good fit?,bounced,2025-02-18,4,tmpl-cold-intro-02,
+INT-1073,Merman Law Firm,Marcus Rivera,phone,Merman — one more thing,bounced,2025-05-01,3,tmpl-case-study-01,
+INT-1008,Searcy Denney Scarola Barnhart & Shipley,Marcus Rivera,linkedin,3 ways firms like Searcy Denney Scarola Barnhart use AI,replied,2025-04-03,4,tmpl-roi-01,
+INT-1178,Phantom Legal Associates,Sarah Chen,email,Re: demand drafting for PI,bounced,2025-03-03,3,tmpl-cold-intro-01,
+INT-1009,Morris Bart,Sarah Chen,email,3 ways firms like Morris Bart use AI,sent,2025-02-16,1,tmpl-referral-01,
+INT-1106,Schmidt Sethi and Akmajian,Jamie Eggertsen,email,Can Eve help with intake overflow?,clicked,2025-02-25,4,tmpl-case-study-01,EVE-BP-004
+INT-1010,Morris Bart,Sarah Chen,email,3 ways firms like Morris Bart use AI,bounced,2025-02-20,2,tmpl-case-study-01,
+INT-1047,Beale Micheals Slack and Shughart,Jamie Eggertsen,linkedin,How Glassman handles file review,sent,2025-03-09,1,tmpl-intake-01,
+INT-1114,Gair Gair Conason,Sarah Chen,email,Ideas for Gair Gair Conason's intake process,sent,2025-03-04,2,tmpl-breakup-01,
+INT-1025,Laurel Employment Law.,Jamie Eggertsen,linkedin,Saw your recent award,clicked,2025-02-14,4,tmpl-referral-01,
+INT-1016,Brown & Crouppen,Marcus Rivera,email,For Brown — cutting review time by 75%,opened,2025-02-22,5,tmpl-auditor-01,EVE-HB-003
+INT-1028,Davis and Sanchez,Sarah Chen,phone,Davis and Sanchez + Eve: a good fit?,sent,2025-03-12,2,tmpl-cold-intro-02,
+INT-1007,Searcy Denney,Marcus Rivera,email,For Searcy — cutting review time by 75%,bounced,2025-03-12,3,tmpl-referral-01,EVE-CS-001
+INT-1001,Ketterman Rowland & West.,Marcus Rivera,email,Ketterman Rowland & West. — worth a quick conversation?,bounced,2025-03-20,1,tmpl-case-study-01,
+INT-1113,Gair Gair Conason,Sarah Chen,email,Ideas for Gair Gair Conason's intake process,bounced,2025-02-24,1,tmpl-auditor-01,
+INT-1017,Drake Injury Lawyers,Naga Vadrevu,email,Drake — one more thing,sent,2025-03-16,1,tmpl-referral-01,
+INT-1013,Brown and Crouppen,Marcus Rivera,phone,How Smith Clinesmith handles demand drafting,sent,2025-01-13,2,tmpl-auditor-01,
+INT-1116,Gair Gair Cona.,Sarah Chen,email,Can Eve help with case evaluation?,replied,2025-03-23,4,tmpl-intake-01,EVE-HB-001
+INT-1012,Brown & Crouppen,Marcus Rivera,email,Re: demand drafting for PI,sent,2025-01-10,1,tmpl-cold-intro-01,
+INT-1097,Minner Vines Injury Lawyers,Naga Vadrevu,email,Breakup: last note from me,opened,2025-05-05,2,tmpl-case-study-01,
+INT-1070,Frontier Law Center,Marcus Rivera,email,3 ways firms like Frontier Law Center use AI,bounced,2025-01-26,4,tmpl-cold-intro-01,EVE-OP-004
+INT-1163,Staver Accident Injury Lawyers,Sarah Chen,email,Re: AI for plaintiff firms,sent,2025-04-04,1,tmpl-pain-point-01,
+INT-1118,Weitz & Luxenberg,Jamie Eggertsen,email,Weitz & Luxenberg — worth a quick conversation?,opened,2025-03-12,2,tmpl-intake-01,EVE-HB-001
+INT-1159,Fieger Law,Jamie Eggertsen,email,3 ways firms like Fieger Law use AI,opened,2025-03-28,3,tmpl-referral-01,EVE-BP-001
+INT-1003,Ketterman Rowland & Westlund,Marcus Rivera,linkedin,Following up on Eve,clicked,2025-03-28,3,tmpl-pain-point-01,
+INT-1022,Laurel Employment Law,Jamie Eggertsen,linkedin,How Smith Clinesmith handles file review,sent,2025-01-21,1,tmpl-cold-intro-01,
+INT-1127,Earley Law Group,Jamie Eggertsen,email,Re: demand drafting for PI,sent,2025-02-23,1,tmpl-pain-point-01,
+INT-1108,Wood and Peterson,Sarah Chen,phone,Ideas for Wood and Peterson's intake process,opened,2025-03-18,2,tmpl-auditor-01,
+INT-1086,Mike Morse Law Firm,Jamie Eggertsen,linkedin,For Mike — cutting review time by 75%,sent,2025-02-17,2,tmpl-roi-01,
+INT-1006,Searcy Denney,Marcus Rivera,email,Can Eve help with demand drafting?,opened,2025-03-12,2,tmpl-cold-intro-02,
+INT-1065,Pintas & Mullins,Marcus Rivera,email,Can Eve help with demand drafting?,bounced,2025-04-02,1,tmpl-intake-01,
+INT-1050,Raphaelson & Levine,Jamie Eggertsen,phone,Can Eve help with intake overflow?,sent,2025-01-16,3,tmpl-breakup-01,
+INT-1121,The Lovely Law Firm,Marcus Rivera,linkedin,The Lovely Law Firm + Eve: a good fit?,sent,2025-01-22,1,tmpl-cold-intro-01,
+INT-1031,Rosen Injury Lawyers,Naga Vadrevu,linkedin,Re: AI for plaintiff firms,sent,2025-05-04,3,tmpl-auditor-01,
+INT-1091,Smith Clinesmith,Naga Vadrevu,email,Following up on Eve,opened,2025-02-01,2,tmpl-auditor-01,
+INT-1112,Munley Law,Naga Vadrevu,phone,Quick question about PI,replied,2025-05-08,4,tmpl-case-study-01,
+INT-1018,Drake,Naga Vadrevu,email,Re: AI for plaintiff firms,bounced,2025-03-20,2,tmpl-intake-01,
+INT-1041,Morgan & Morgan,Marcus Rivera,email,Quick question about PI,bounced,2025-02-04,3,tmpl-cold-intro-02,
+INT-1152,Florin Roebig,Marcus Rivera,email,Re: demand drafting for PI,sent,2025-03-24,1,tmpl-breakup-01,
+INT-1005,Searcy Denney Scarola Barnhart & Shipley,Marcus Rivera,email,Saw your recent award,sent,2025-03-04,1,tmpl-breakup-01,
+INT-1077,Buckfire & Bukfire,Marcus Rivera,phone,How Glassman handles case evaluation,sent,2025-03-11,3,tmpl-auditor-01,
+INT-1089,TorkLaw,Sarah Chen,email,TorkLaw — worth a quick conversation?,opened,2025-01-23,3,tmpl-roi-01,
+INT-1090,Smith Cline Smith,Naga Vadrevu,email,Smith Cline Smith + Eve: a good fit?,sent,2025-01-26,1,tmpl-pain-point-01,
+INT-1158,Fieger Law,Jamie Eggertsen,email,Re: AI for plaintiff firms,bounced,2025-03-27,2,tmpl-breakup-01,EVE-OP-005
+INT-1038,Ben Crump Law,Naga Vadrevu,linkedin,Re: AI for plaintiff firms,clicked,2025-02-01,5,tmpl-roi-01,
+INT-1087,TorkLaw,Sarah Chen,linkedin,Quick question about trucking cases,sent,2025-01-13,1,tmpl-roi-01,
+INT-1103,Schmidt Sethi & Akmajian,Jamie Eggertsen,phone,For Schmidt — cutting review time by 75%,sent,2025-01-23,1,tmpl-pain-point-01,
+INT-1020,Drake Injury Lawyers,Naga Vadrevu,linkedin,Re: AI for plaintiff firms,clicked,2025-04-15,4,tmpl-roi-01,
+INT-1161,Stewart J. Guss,Naga Vadrevu,linkedin,3 ways firms like Stewart J. Guss use AI,sent,2025-01-14,1,tmpl-intake-01,
+INT-1123,The Lovely Law Firm,Marcus Rivera,email,Following up on Eve,clicked,2025-02-14,3,tmpl-cold-intro-01,
+INT-1109,Munley Law,Naga Vadrevu,email,Munley — one more thing,bounced,2025-04-06,1,tmpl-cold-intro-01,
+INT-1154,Florin Roebig,Marcus Rivera,linkedin,Re: demand drafting for trucking cases,opened,2025-04-06,3,tmpl-pain-point-01,
+INT-1126,Rosenfeld Injury Lawy.,Marcus Rivera,email,Re: demand drafting for trucking cases,sent,2025-01-26,3,tmpl-auditor-01,EVE-BP-002
+INT-1130,Earley Law Group,Jamie Eggertsen,email,Earley Law Group + Eve: a good fit?,opened,2025-03-22,4,tmpl-referral-01,
+INT-1057,Newsome Melton,Sarah Chen,linkedin,Breakup: last note from me,bounced,2025-03-11,1,tmpl-breakup-01,
+INT-1171,Pond Lehocky Gior.,Jamie Eggertsen,email,Following up on Eve,bounced,2025-01-09,1,tmpl-cold-intro-01,
+INT-1098,Nace Law Group,Marcus Rivera,linkedin,Can Eve help with demand drafting?,sent,2025-01-18,1,tmpl-case-study-01,
+INT-1045,Freeburg & Gran.,Marcus Rivera,email,Following up on Eve,sent,2025-02-10,1,tmpl-auditor-01,
+INT-1068,Frontier Law Cent.,Marcus Rivera,email,Ideas for Frontier Law Cent.'s intake process,sent,2025-01-09,2,tmpl-breakup-01,EVE-HB-002
+INT-1147,Derrik Law Firm,Jamie Eggertsen,email,Derrick — one more thing,sent,2025-02-19,1,tmpl-cold-intro-01,
+INT-1170,Davis Law Grou.,Marcus Rivera,phone,Ideas for Davis Law Grou.'s intake process,replied,2025-04-18,5,tmpl-roi-01,
+INT-1040,Morgan & Morgan,Marcus Rivera,linkedin,Ideas for Morgan & Morgan's intake process,opened,2025-02-01,2,tmpl-pain-point-01,
+INT-1169,Davis Law Group,Marcus Rivera,email,Davis Law Group + Eve: a good fit?,opened,2025-04-25,4,tmpl-roi-01,
+INT-1137,Patel Law PC.,Naga Vadrevu,phone,Ideas for Patel Law PC.'s intake process,clicked,2025-05-20,5,tmpl-cold-intro-02,
+INT-1042,Cellino Law,Sarah Chen,email,Breakup: last note from me,sent,2025-02-21,1,tmpl-case-study-01,
+INT-1131,Carey Leisure Carn.,Marcus Rivera,email,Following up on Eve,sent,2025-03-11,1,tmpl-breakup-01,
+INT-1039,Morgan & Morgan,Marcus Rivera,email,How Glassman handles file review,sent,2025-01-20,1,tmpl-breakup-01,
+INT-1027,Davis & Sanchez,Sarah Chen,email,For Davis — cutting review time by 75%,sent,2025-03-08,1,tmpl-pain-point-01,
+INT-1151,Derrick Law,Jamie Eggertsen,email,Following up on Eve,replied,2025-04-03,5,tmpl-case-study-01,
+INT-1051,Raphaelson and Levine,Jamie Eggertsen,email,3 ways firms like Raphaelson and Levine use AI,bounced,2025-01-13,4,tmpl-breakup-01,EVE-OP-006
+INT-1149,Derrick Law Firm,Jamie Eggertsen,email,Following up on Eve,sent,2025-02-25,3,tmpl-intake-01,
+INT-1160,Fieger Law,Jamie Eggertsen,linkedin,How Smith Clinesmith handles demand drafting,replied,2025-04-13,4,tmpl-cold-intro-02,
+INT-1069,Frontier Law Center,Marcus Rivera,phone,For Frontier — cutting review time by 75%,opened,2025-01-11,3,tmpl-referral-01,
+INT-1115,Gair Gair Conason,Sarah Chen,email,Gair Gair Conason — worth a quick conversation?,sent,2025-03-14,3,tmpl-referral-01,
+INT-1081,Law Offices of James Scott Farrin,Naga Vadrevu,email,Can Eve help with intake overflow?,opened,2025-04-27,2,tmpl-referral-01,
+INT-1083,Law Offices of James Scott Farrin,Naga Vadrevu,phone,Breakup: last note from me,bounced,2025-05-05,4,tmpl-breakup-01,
+INT-1150,Derrick Law Firm,Jamie Eggertsen,email,Re: demand drafting for PI,clicked,2025-03-12,4,tmpl-referral-01,
+INT-1080,Law Offices of James Scott Farrin,Naga Vadrevu,email,Re: AI for plaintiff firms,sent,2025-04-24,1,tmpl-cold-intro-01,
+INT-1066,Pintas & Mullins Law Firm,Marcus Rivera,email,Re: AI for plaintiff firms,opened,2025-04-07,2,tmpl-pain-point-01,EVE-CS-001
+INT-1074,Merman Law Firm,Marcus Rivera,email,Following up on Eve,bounced,2025-05-19,4,tmpl-case-study-01,
+INT-1174,Corboy Demetrio,Jamie Eggertsen,email,Breakup: last note from me,opened,2025-01-16,2,tmpl-referral-01,EVE-OP-003
+INT-1033,Rosen,Naga Vadrevu,email,3 ways firms like Rosen use AI,opened,2025-06-04,5,tmpl-roi-01,EVE-BP-001
+INT-1111,Munley Law,Naga Vadrevu,linkedin,Following up on Eve,clicked,2025-04-12,3,tmpl-cold-intro-02,
+INT-1165,Glassman Injury Lawyers,Marcus Rivera,phone,Glassman Injury Lawyers + Eve: a good fit?,bounced,2025-01-06,1,tmpl-cold-intro-02,
+INT-1145,Hershey Law,Jamie Eggertsen,phone,Can Eve help with intake overflow?,replied,2025-03-07,4,tmpl-case-study-01,
+INT-1019,Drake Injury Lawy.,Naga Vadrevu,email,Breakup: last note from me,bounced,2025-03-24,3,tmpl-auditor-01,
+INT-1100,Nace Law Group,Marcus Rivera,email,Saw your recent hiring spree,clicked,2025-02-08,3,tmpl-referral-01,
+INT-1034,Ben Crump Law,Naga Vadrevu,email,Ben Crump Law — worth a quick conversation?,bounced,2025-01-13,1,tmpl-cold-intro-02,
+INT-1129,Early Law Group,Jamie Eggertsen,email,For Earley — cutting review time by 75%,bounced,2025-03-13,3,tmpl-breakup-01,EVE-WB-002
+INT-1024,Laurel Employment Law,Jamie Eggertsen,email,Following up on Eve,clicked,2025-02-09,3,tmpl-pain-point-01,
+INT-1148,Derrick Law Firm,Jamie Eggertsen,email,Derrick Law Firm + Eve: a good fit?,bounced,2025-03-01,2,tmpl-cold-intro-01,EVE-OP-006
+INT-1021,Ricci Law Firm,Naga Vadrevu,email,Ricci — one more thing,sent,2025-02-06,1,tmpl-case-study-01,
+INT-1117,Weitz & Luxe.,Jamie Eggertsen,email,Weitz — one more thing,sent,2025-03-07,1,tmpl-pain-point-01,
+INT-1095,Rosenberg Minc Falkoff,Sarah Chen,phone,3 ways firms like Rosenberg Minc Falkoff use AI,opened,2025-04-06,3,tmpl-intake-01,
+INT-1105,Schmidt Sethi & Akmajian,Jamie Eggertsen,email,Breakup: last note from me,sent,2025-02-07,3,tmpl-cold-intro-01,
+INT-1133,Patel Law PC,Naga Vadrevu,email,Re: AI for plaintiff firms,sent,2025-04-12,1,tmpl-referral-01,
+INT-1182,Ironside Litigation Group,Naga Vadrevu,email,How Glassman handles intake overflow,sent,2025-03-01,3,tmpl-cold-intro-01,
+INT-1011,Morris Bart,Sarah Chen,phone,Morris — one more thing,clicked,2025-02-24,3,tmpl-breakup-01,
+INT-1023,Laurel Employment Law.,Jamie Eggertsen,phone,How Glassman handles demand drafting,bounced,2025-01-25,2,tmpl-referral-01,
+INT-1071,Merman Law Firm,Marcus Rivera,email,Merman — one more thing,sent,2025-04-17,1,tmpl-breakup-01,
+INT-1036,Ben Crump Law,Naga Vadrevu,phone,Saw your recent growth,clicked,2025-01-19,3,tmpl-pain-point-01,
+INT-1015,Brown & Crouppen,Marcus Rivera,linkedin,3 ways firms like Brown & Crouppen use AI,opened,2025-02-12,4,tmpl-referral-01,
+INT-1125,Rosenfeld Injury Lawyers,Marcus Rivera,phone,Re: demand drafting for workers comp,sent,2025-01-17,2,tmpl-cold-intro-01,
+INT-1107,Wood & Peterson,Sarah Chen,linkedin,Quick question about workers comp,sent,2025-03-09,1,tmpl-referral-01,
+INT-1060,Anidjar & Levine,Sarah Chen,email,Re: demand drafting for med mal,sent,2025-02-23,1,tmpl-breakup-01,
+INT-1135,Patel Law PC,Naga Vadrevu,phone,Breakup: last note from me,clicked,2025-04-18,3,tmpl-cold-intro-02,
+INT-1052,Raphaelson and Levine,Jamie Eggertsen,phone,How Glassman handles file review,opened,2025-02-08,5,tmpl-pain-point-01,
+INT-1026,Laurel Employment Law.,Jamie Eggertsen,email,Following up on Eve,clicked,2025-02-09,5,tmpl-cold-intro-01,EVE-OP-002
+INT-1078,Buckfire & Buckfire,Marcus Rivera,email,Ideas for Buckfire & Buckfire's intake process,replied,2025-04-02,4,tmpl-intake-01,
+INT-1096,Minner Vines Injury Lawyers,Naga Vadrevu,linkedin,3 ways firms like Minner Vines Injury Lawyers use AI,sent,2025-04-23,1,tmpl-case-study-01,
+INT-1168,Davis,Marcus Rivera,email,Re: demand drafting for workers comp,clicked,2025-04-18,3,tmpl-cold-intro-01,EVE-OP-004
+INT-1000,Dudley DeBosier Injury Lawyers,Marcus Rivera,email,Saw your recent award,bounced,2025-04-13,1,tmpl-cold-intro-02,
+INT-1085,Mike Morse Law Firm,Jamie Eggertsen,email,Breakup: last note from me,sent,2025-02-10,1,tmpl-breakup-01,
+INT-1002,Ketterman Rowland & Westlund,Marcus Rivera,email,Can Eve help with intake overflow?,opened,2025-03-26,2,tmpl-cold-intro-01,EVE-WB-002
+INT-1177,Phantom Legal Associates,Sarah Chen,phone,Phantom Legal Associates — worth a quick conversation?,bounced,2025-02-15,2,tmpl-cold-intro-01,
+INT-1162,Stewart J. Guss.,Naga Vadrevu,phone,Stewart J. Guss. — worth a quick conversation?,bounced,2025-01-17,2,tmpl-intake-01,
+INT-1088,TorkLaw,Sarah Chen,phone,TorkLaw — worth a quick conversation?,opened,2025-01-19,2,tmpl-referral-01,
+INT-1138,Sibley Dolman Gipe,Sarah Chen,email,Re: demand drafting for PI,bounced,2025-03-07,1,tmpl-roi-01,
+INT-1059,Newsome Melton,Sarah Chen,linkedin,How Glassman handles intake overflow,bounced,2025-03-17,3,tmpl-referral-01,

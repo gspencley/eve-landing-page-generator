@@ -8,9 +8,9 @@ import { PageEventEntity } from '../entities/page-event.entity';
 import { PageEventType } from '../types/page-event-type.enum';
 import { FirmLookupService } from '../../firms/services/firm-lookup.service';
 import { FirmNotFoundError } from '../../firms/types/firm-not-found.error';
-import { AssetMatcherService } from '../../assets/services/asset-matcher.service';
 import { normalizeFirmName } from '../../data/functions/normalize-firm-name.function';
 import { EnvConfig } from '../../config/env.validation';
+import { matchAssets } from '../../assets/functions/match-assets.function';
 
 @Injectable()
 export class PageGenerationService {
@@ -22,14 +22,13 @@ export class PageGenerationService {
     @InjectRepository(PageEventEntity)
     private readonly eventRepository: Repository<PageEventEntity>,
     private readonly firmLookupService: FirmLookupService,
-    private readonly assetMatcherService: AssetMatcherService,
     private readonly configService: ConfigService<EnvConfig, true>,
   ) {}
 
   async generatePageForFirm(firmQuery: string): Promise<PageEntity> {
     const lookup = this.firmLookupService.findFirm(firmQuery);
     const { profile } = lookup;
-    const matchResult = this.assetMatcherService.matchAssets(profile);
+    const matchResult = matchAssets(profile);
 
     const slug = this.buildSlug(profile.firmName);
     const existing = await this.pageRepository.findOne({ where: { slug } });

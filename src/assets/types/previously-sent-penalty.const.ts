@@ -1,0 +1,1 @@
+export const PREVIOUSLY_SENT_PENALTY = 25;

@@ -1,0 +1,17 @@
+export enum AssetTag {
+  INTAKE = 'intake',
+  DEMAND_DRAFTING = 'demand_drafting',
+  FILE_REVIEW = 'file_review',
+  AFTER_HOURS = 'after_hours',
+  CASE_EVALUATION = 'case_evaluation',
+  MASS_TORT = 'mass_tort',
+  WORKERS_COMP = 'workers_comp',
+  NURSING_HOME = 'nursing_home',
+  MED_MAL = 'med_mal',
+  TRUCKING = 'trucking',
+  LITIFY = 'litify',
+  CLIO = 'clio',
+  FILEVINE = 'filevine',
+  GROWTH = 'growth',
+  COMPETITOR_DISPLACEMENT = 'competitor_displacement',
+}

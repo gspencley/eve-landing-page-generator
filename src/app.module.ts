@@ -4,7 +4,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { validateEnv } from './config/env.validation';
 import { DataModule } from './data/data.module';
 import { FirmsModule } from './firms/firms.module';
-import { AssetsModule } from './assets/assets.module';
 import { PagesModule } from './pages/pages.module';
 import { SlackModule } from './slack/slack.module';
 import { PageEntity } from './pages/entities/page.entity';
@@ -28,7 +27,6 @@ import { PageEventEntity } from './pages/entities/page-event.entity';
     }),
     DataModule,
     FirmsModule,
-    AssetsModule,
     PagesModule,
     SlackModule,
   ],

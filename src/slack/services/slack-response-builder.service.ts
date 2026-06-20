@@ -1,13 +1,13 @@
 import { Injectable, Logger } from '@nestjs/common';
-
-export interface SlackImmediateResponse {
-  response_type: 'ephemeral' | 'in_channel';
-  text: string;
-}
+import { FirmNotFoundError } from '../../firms/types/firm-not-found.error';
+import { PageGenerationService } from '../../pages/services/page-generation.service';
+import { SlackImmediateResponse } from '../types/slack-immediate-response.interface';
 
 @Injectable()
 export class SlackResponseBuilderService {
   private readonly logger = new Logger(SlackResponseBuilderService.name);
+
+  constructor(private readonly pageGenerationService: PageGenerationService) {}
 
   buildImmediateAck(message: string): SlackImmediateResponse {
     return {
@@ -28,6 +28,34 @@ export class SlackResponseBuilderService {
       response_type: 'ephemeral',
       text: message,
     };
+  }
+
+  async generateAndRespond(firmQuery: string, responseUrl: string): Promise<void> {
+    try {
+      const page = await this.pageGenerationService.generatePageForFirm(firmQuery);
+      const url = this.pageGenerationService.getPublicUrl(page.slug);
+      await this.postToResponseUrl(responseUrl, this.buildSuccessMessage(page.firmName, url));
+    } catch (error) {
+      const message =
+        error instanceof FirmNotFoundError
+          ? error.message
+          : `Failed to generate page for "${firmQuery}". Please try again.`;
+
+      await this.postToResponseUrl(responseUrl, this.buildErrorMessage(message));
+    }
+  }
+
+  async generateSync(firmQuery: string) {
+    try {
+      const page = await this.pageGenerationService.generatePageForFirm(firmQuery);
+      const url = this.pageGenerationService.getPublicUrl(page.slug);
+      return this.buildSuccessMessage(page.firmName, url);
+    } catch (error) {
+      if (error instanceof FirmNotFoundError) {
+        return this.buildErrorMessage(error.message);
+      }
+      throw error;
+    }
   }
 
   async postToResponseUrl(responseUrl: string, payload: SlackImmediateResponse): Promise<void> {

@@ -1,4 +1,6 @@
-import { AssetTag, AssetType, MarketingAsset } from './types/asset.types';
+import { AssetType } from './types/asset-type.enum';
+import { AssetTag } from './types/asset-tag.enum';
+import { MarketingAsset } from './types/marketing-asset.interface';
 
 export const ASSET_LIBRARY: MarketingAsset[] = [
   {

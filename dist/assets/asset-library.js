@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ASSET_LIBRARY = void 0;
 exports.getAssetById = getAssetById;
-const asset_types_1 = require("./asset.types");
+const asset_types_1 = require("./types/asset.types");
 exports.ASSET_LIBRARY = [
     {
         id: 'EVE-CS-001',

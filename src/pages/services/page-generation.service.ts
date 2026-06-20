@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import { nanoid } from 'nanoid';
 import { PageEntity } from '../entities/page.entity';
 import { PageEventEntity } from '../entities/page-event.entity';
-import { PageEventType } from '../types/page-event.types';
+import { PageEventType } from '../types/page-event-type.enum';
 import { FirmLookupService } from '../../firms/services/firm-lookup.service';
 import { FirmNotFoundError } from '../../firms/types/firm-profile.types';
 import { AssetMatcherService } from '../../assets/services/asset-matcher.service';

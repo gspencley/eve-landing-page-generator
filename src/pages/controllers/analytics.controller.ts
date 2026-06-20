@@ -7,7 +7,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { PageGenerationService } from '../services/page-generation.service';
-import { PageEventType } from '../types/page-event.types';
+import { PageEventType } from '../types/page-event-type.enum';
 
 interface RecordEventDto {
   pageId: string;

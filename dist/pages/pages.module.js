@@ -9,11 +9,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PagesModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const page_entity_1 = require("./page.entity");
-const page_event_entity_1 = require("./page-event.entity");
-const page_generation_service_1 = require("./page-generation.service");
-const landing_page_controller_1 = require("./landing-page.controller");
-const analytics_controller_1 = require("./analytics.controller");
+const page_entity_1 = require("./entities/page.entity");
+const page_event_entity_1 = require("./entities/page-event.entity");
+const page_generation_service_1 = require("./services/page-generation.service");
+const landing_page_controller_1 = require("./controllers/landing-page.controller");
+const analytics_controller_1 = require("./controllers/analytics.controller");
 const firms_module_1 = require("../firms/firms.module");
 const assets_module_1 = require("../assets/assets.module");
 let PagesModule = class PagesModule {

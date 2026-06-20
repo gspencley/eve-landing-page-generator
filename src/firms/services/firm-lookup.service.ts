@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { DataService } from '../data/data.service';
-import { firmNamesMatch, normalizeFirmName } from '../data/normalize-firm-name';
+import { DataService } from '../../data/data.service';
+import { firmNamesMatch, normalizeFirmName } from '../../data/normalize-firm-name';
 import {
   FirmLookupResult,
   FirmNotFoundError,
   FirmProfile,
   ProspectFirmRow,
-} from './firm-profile.types';
+} from '../types/firm-profile.types';
 
 @Injectable()
 export class FirmLookupService {

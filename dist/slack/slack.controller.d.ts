@@ -16,7 +16,7 @@ export declare class SlackController {
     private readonly slackResponseService;
     private readonly pageGenerationService;
     constructor(slackSignatureService: SlackSignatureService, slackResponseService: SlackResponseService, pageGenerationService: PageGenerationService);
-    handleSlashCommand(req: RawBodyRequest, body: SlackSlashCommandPayload, timestamp: string, signature: string): Promise<import("./slack-response.service").SlackImmediateResponse>;
+    handleSlashCommand(req: RawBodyRequest, body: SlackSlashCommandPayload, timestamp: string, signature: string): Promise<any>;
     private generateAndRespond;
     private generateSync;
 }

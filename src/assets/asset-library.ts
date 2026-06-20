@@ -1,4 +1,4 @@
-import { AssetTag, AssetType, MarketingAsset } from './asset.types';
+import { AssetTag, AssetType, MarketingAsset } from './types/asset.types';
 
 export const ASSET_LIBRARY: MarketingAsset[] = [
   {

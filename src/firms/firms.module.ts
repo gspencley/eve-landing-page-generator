@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { DataModule } from '../data/data.module';
-import { FirmLookupService } from './firm-lookup.service';
+import { FirmLookupService } from './services/firm-lookup.service';
 
 @Module({
   imports: [DataModule],

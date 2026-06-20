@@ -3,14 +3,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
 import { Repository } from 'typeorm';
 import { nanoid } from 'nanoid';
-import { PageEntity } from './page.entity';
-import { PageEventEntity } from './page-event.entity';
-import { PageEventType } from './page-event.types';
-import { FirmLookupService } from '../firms/firm-lookup.service';
-import { FirmNotFoundError } from '../firms/firm-profile.types';
-import { AssetMatcherService } from '../assets/asset-matcher.service';
-import { normalizeFirmName } from '../data/normalize-firm-name';
-import { EnvConfig } from '../config/env.validation';
+import { PageEntity } from '../entities/page.entity';
+import { PageEventEntity } from '../entities/page-event.entity';
+import { PageEventType } from '../types/page-event.types';
+import { FirmLookupService } from '../../firms/services/firm-lookup.service';
+import { FirmNotFoundError } from '../../firms/types/firm-profile.types';
+import { AssetMatcherService } from '../../assets/services/asset-matcher.service';
+import { normalizeFirmName } from '../../data/normalize-firm-name';
+import { EnvConfig } from '../../config/env.validation';
 
 @Injectable()
 export class PageGenerationService {

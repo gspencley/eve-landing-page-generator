@@ -11,8 +11,8 @@ exports.DataService = void 0;
 const common_1 = require("@nestjs/common");
 const path_1 = require("path");
 const normalize_firm_name_1 = require("./normalize-firm-name");
-const csv_parser_1 = require("./parsers/csv.parser");
-const xlsx_parser_1 = require("./parsers/xlsx.parser");
+const parse_csv_file_function_1 = require("./functions/parse-csv-file.function");
+const parse_xlsx_file_function_1 = require("./functions/parse-xlsx-file.function");
 const DATA_DIR = (0, path_1.join)(process.cwd(), 'data');
 let DataService = DataService_1 = class DataService {
     constructor() {
@@ -43,11 +43,11 @@ let DataService = DataService_1 = class DataService {
         this.logger.log(`Loaded ${this.prospectFirms.length} firms, ${this.enrichmentSignals.length} enrichment rows, ${this.interactionHistory.length} interactions`);
     }
     loadProspectFirms() {
-        const fromXlsx = (0, xlsx_parser_1.parseXlsxFile)((0, path_1.join)(DATA_DIR, 'prospect_firms.xlsx'));
+        const fromXlsx = (0, parse_xlsx_file_function_1.parseXlsxFile)((0, path_1.join)(DATA_DIR, 'prospect_firms.xlsx'));
         if (fromXlsx.length > 0) {
             return this.mergeSampleProspects(fromXlsx.map((row) => this.normalizeProspectRow(row)));
         }
-        const enrichmentRows = (0, csv_parser_1.parseCsvFile)((0, path_1.join)(DATA_DIR, 'enrichment_signals.csv'));
+        const enrichmentRows = (0, parse_csv_file_function_1.parseCsvFile)((0, path_1.join)(DATA_DIR, 'enrichment_signals.csv'));
         if (enrichmentRows.length > 0) {
             this.logger.warn('prospect_firms.xlsx not found or empty — deriving prospect rows from enrichment_signals.csv');
             return this.mergeSampleProspects(enrichmentRows.map((row) => this.inferProspectFromEnrichment(row)));
@@ -131,7 +131,7 @@ let DataService = DataService_1 = class DataService {
         };
     }
     loadEnrichmentSignals() {
-        const fromCsv = (0, csv_parser_1.parseCsvFile)((0, path_1.join)(DATA_DIR, 'enrichment_signals.csv'));
+        const fromCsv = (0, parse_csv_file_function_1.parseCsvFile)((0, path_1.join)(DATA_DIR, 'enrichment_signals.csv'));
         if (fromCsv.length > 0) {
             return fromCsv;
         }
@@ -139,7 +139,7 @@ let DataService = DataService_1 = class DataService {
         return SAMPLE_ENRICHMENT_SIGNALS;
     }
     loadInteractionHistory() {
-        const fromCsv = (0, csv_parser_1.parseCsvFile)((0, path_1.join)(DATA_DIR, 'interaction_history.csv'));
+        const fromCsv = (0, parse_csv_file_function_1.parseCsvFile)((0, path_1.join)(DATA_DIR, 'interaction_history.csv'));
         if (fromCsv.length > 0) {
             return fromCsv;
         }

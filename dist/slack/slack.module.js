@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SlackModule = void 0;
 const common_1 = require("@nestjs/common");
-const slack_controller_1 = require("./slack.controller");
-const slack_signature_service_1 = require("./slack-signature.service");
-const slack_response_service_1 = require("./slack-response.service");
+const slack_controller_1 = require("./controllers/slack.controller");
+const slack_signature_service_1 = require("./services/slack-signature.service");
+const slack_response_service_1 = require("./services/slack-response.service");
 const pages_module_1 = require("../pages/pages.module");
 let SlackModule = class SlackModule {
 };

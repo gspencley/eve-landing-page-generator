@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AssetMatcherService } from './asset-matcher.service';
+import { AssetMatcherService } from './services/asset-matcher.service';
 
 @Module({
   providers: [AssetMatcherService],

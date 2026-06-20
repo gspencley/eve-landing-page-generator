@@ -9,7 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FirmsModule = void 0;
 const common_1 = require("@nestjs/common");
 const data_module_1 = require("../data/data.module");
-const firm_lookup_service_1 = require("./firm-lookup.service");
+const firm_lookup_service_1 = require("./services/firm-lookup.service");
 let FirmsModule = class FirmsModule {
 };
 exports.FirmsModule = FirmsModule;

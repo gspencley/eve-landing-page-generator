@@ -16,8 +16,8 @@ const firms_module_1 = require("./firms/firms.module");
 const assets_module_1 = require("./assets/assets.module");
 const pages_module_1 = require("./pages/pages.module");
 const slack_module_1 = require("./slack/slack.module");
-const page_entity_1 = require("./pages/page.entity");
-const page_event_entity_1 = require("./pages/page-event.entity");
+const page_entity_1 = require("./pages/entities/page.entity");
+const page_event_entity_1 = require("./pages/entities/page-event.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;

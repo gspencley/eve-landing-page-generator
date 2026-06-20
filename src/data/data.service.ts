@@ -1,10 +1,10 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { join } from 'path';
 import { normalizeFirmName } from './normalize-firm-name';
-import { parseCsvFile } from './parsers/csv.parser';
-import { parseXlsxFile } from './parsers/xlsx.parser';
-import { ProspectFirmRow } from '../firms/firm-profile.types';
-import { EnrichmentSignalRow, InteractionHistoryRow } from '../firms/firm-profile.types';
+import { parseCsvFile } from './functions/parse-csv-file.function';
+import { parseXlsxFile } from './functions/parse-xlsx-file.function';
+import { ProspectFirmRow } from '../firms/types/firm-profile.types';
+import { EnrichmentSignalRow, InteractionHistoryRow } from '../firms/types/firm-profile.types';
 
 const DATA_DIR = join(process.cwd(), 'data');
 

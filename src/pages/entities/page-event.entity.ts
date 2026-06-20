@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 import { PageEntity } from './page.entity';
-import { PageEventType } from './page-event.types';
+import { PageEventType } from '../types/page-event.types';
 
 @Entity('page_events')
 export class PageEventEntity {

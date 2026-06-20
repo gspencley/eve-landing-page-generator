@@ -6,8 +6,8 @@ import {
   Post,
   BadRequestException,
 } from '@nestjs/common';
-import { PageGenerationService } from './page-generation.service';
-import { PageEventType } from './page-event.types';
+import { PageGenerationService } from '../services/page-generation.service';
+import { PageEventType } from '../types/page-event.types';
 
 interface RecordEventDto {
   pageId: string;

@@ -8,10 +8,10 @@ import {
   Req,
 } from '@nestjs/common';
 import { Request } from 'express';
-import { SlackSignatureService } from './slack-signature.service';
-import { SlackResponseService } from './slack-response.service';
-import { PageGenerationService } from '../pages/page-generation.service';
-import { FirmNotFoundError } from '../firms/firm-profile.types';
+import { SlackSignatureService } from '../services/slack-signature.service';
+import { SlackResponseService } from '../services/slack-response.service';
+import { PageGenerationService } from '../../pages/services/page-generation.service';
+import { FirmNotFoundError } from '../../firms/types/firm-profile.types';
 
 interface SlackSlashCommandPayload {
   command?: string;

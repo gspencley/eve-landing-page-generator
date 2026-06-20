@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { ASSET_LIBRARY } from './asset-library';
-import { AssetMatchResult, AssetScoreBreakdown, MarketingAsset } from './asset.types';
-import { FirmProfile } from '../firms/firm-profile.types';
+import { ASSET_LIBRARY } from '../asset-library';
+import { AssetMatchResult, AssetScoreBreakdown, MarketingAsset } from '../types/asset.types';
+import { FirmProfile } from '../../firms/types/firm-profile.types';
 
 const PREVIOUSLY_SENT_PENALTY = 25;
 const BOUNCED_FIRM_PENALTY = 8;

@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { createHmac, timingSafeEqual } from 'crypto';
-import { EnvConfig } from '../config/env.validation';
+import { EnvConfig } from '../../config/env.validation';
 
 @Injectable()
 export class SlackSignatureService {

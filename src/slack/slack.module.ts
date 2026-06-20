@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { SlackController } from './slack.controller';
-import { SlackSignatureService } from './slack-signature.service';
-import { SlackResponseService } from './slack-response.service';
+import { SlackController } from './controllers/slack.controller';
+import { SlackSignatureService } from './services/slack-signature.service';
+import { SlackResponseService } from './services/slack-response.service';
 import { PagesModule } from '../pages/pages.module';
 
 @Module({

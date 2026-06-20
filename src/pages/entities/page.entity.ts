@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { PageEventEntity } from './page-event.entity';
-import { AssetScoreBreakdown } from '../assets/asset.types';
-import { MarketingAsset } from '../assets/asset.types';
+import { AssetScoreBreakdown } from '../../assets/types/asset.types';
+import { MarketingAsset } from '../../assets/types/asset.types';
 
 @Entity('pages')
 export class PageEntity {

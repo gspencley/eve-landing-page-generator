@@ -7,8 +7,8 @@ import { FirmsModule } from './firms/firms.module';
 import { AssetsModule } from './assets/assets.module';
 import { PagesModule } from './pages/pages.module';
 import { SlackModule } from './slack/slack.module';
-import { PageEntity } from './pages/page.entity';
-import { PageEventEntity } from './pages/page-event.entity';
+import { PageEntity } from './pages/entities/page.entity';
+import { PageEventEntity } from './pages/entities/page-event.entity';
 
 @Module({
   imports: [

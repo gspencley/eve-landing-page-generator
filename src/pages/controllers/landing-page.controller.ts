@@ -1,8 +1,8 @@
 import { Controller, Get, NotFoundException, Param, Render, Req } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Request } from 'express';
-import { PageGenerationService } from './page-generation.service';
-import { EnvConfig } from '../config/env.validation';
+import { PageGenerationService } from '../services/page-generation.service';
+import { EnvConfig } from '../../config/env.validation';
 
 @Controller()
 export class LandingPageController {

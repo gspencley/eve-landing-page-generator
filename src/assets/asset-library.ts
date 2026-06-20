@@ -222,7 +222,3 @@ export const ASSET_LIBRARY: MarketingAsset[] = [
     baseWeight: 7,
   },
 ];
-
-export function getAssetById(id: string): MarketingAsset | undefined {
-  return ASSET_LIBRARY.find((asset) => asset.id === id);
-}

@@ -1,20 +1,14 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Get,
   NotFoundException,
   Post,
-  BadRequestException,
 } from '@nestjs/common';
 import { PageGenerationService } from '../services/page-generation.service';
 import { PageEventType } from '../types/page-event-type.enum';
-
-interface RecordEventDto {
-  pageId: string;
-  eventType: PageEventType;
-  assetId?: string;
-  metadata?: Record<string, unknown>;
-}
+import { RecordEventDto } from '../types/record-event-dto.interface';
 
 @Controller()
 export class AnalyticsController {

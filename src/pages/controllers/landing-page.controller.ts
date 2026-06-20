@@ -2,6 +2,7 @@ import { Controller, Get, NotFoundException, Param, Render, Req } from '@nestjs/
 import { Request } from 'express';
 import { PageGenerationService } from '../services/page-generation.service';
 import { LandingPageViewService } from '../services/landing-page-view.service';
+import * as util from 'node:util';
 
 @Controller()
 export class LandingPageController {
@@ -18,10 +19,15 @@ export class LandingPageController {
   @Get('p/:slug')
   @Render('landing-page')
   async renderLandingPage(@Param('slug') slug: string, @Req() req: Request) {
+    console.log('renderLandingPage');
+
     const page = await this.pageGenerationService.findBySlug(slug);
+
+    util.inspect(page);
 
     if (!page) {
       if (slug === 'sample-firm') {
+        console.log('TEST');
         try {
           const generated = await this.pageGenerationService.generatePageForFirm('Sample Firm');
           await this.pageGenerationService.recordPageView(generated);

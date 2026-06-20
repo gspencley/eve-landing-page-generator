@@ -10,8 +10,6 @@ export class LandingPageViewService {
     page: Awaited<ReturnType<PageGenerationService['findBySlug']>>,
     path: string,
   ) {
-    const baseUrl = this.configService.get('PUBLIC_BASE_URL', { infer: true });
-
     return {
       title: page!.metaTitle,
       metaDescription: page!.metaDescription,
@@ -28,7 +26,7 @@ export class LandingPageViewService {
         type: asset.type,
       })),
       scoringExplanations: page!.scoringExplanations,
-      publicBaseUrl: baseUrl,
+      publicBaseUrl: this.configService.get('PUBLIC_BASE_URL', { infer: true }),
       currentPath: path,
     };
   }

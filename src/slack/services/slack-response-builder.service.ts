@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { FirmNotFoundError } from '../../firms/types/firm-not-found.error';
 import { PageGenerationService } from '../../pages/services/page-generation.service';
 import { SlackImmediateResponse } from '../types/slack-immediate-response.interface';
+import * as util from 'node:util';
 
 @Injectable()
 export class SlackResponseBuilderService {
@@ -48,7 +49,11 @@ export class SlackResponseBuilderService {
   async generateSync(firmQuery: string) {
     try {
       const page = await this.pageGenerationService.generatePageForFirm(firmQuery);
+      util.inspect(page);
+
       const url = this.pageGenerationService.getPublicUrl(page.slug);
+      console.log('url', url);
+
       return this.buildSuccessMessage(page.firmName, url);
     } catch (error) {
       if (error instanceof FirmNotFoundError) {

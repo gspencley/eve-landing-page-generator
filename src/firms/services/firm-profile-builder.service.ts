@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { DataService } from '../../data/data.service';
+import { DataService } from '../../data/services/data.service';
 import { FirmProfile } from '../types/firm-profile.interface';
 import { ProspectFirmRow } from '../types/prospect-firm-row.interface';
 import { Interactions } from '../interactions/interactions';

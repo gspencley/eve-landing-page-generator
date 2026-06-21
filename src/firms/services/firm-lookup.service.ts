@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { DataService } from '../../data/data.service';
+import { DataService } from '../../data/services/data.service';
 import { normalizeFirmName } from '../../data/functions/normalize-firm-name.function';
 import { FirmNotFoundError } from '../types/firm-not-found.error';
 import { doFirmNamesMatch } from '../../data/functions/do-firm-names-match.function';

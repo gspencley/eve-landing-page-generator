@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { DataService } from './data.service';
+import { DataService } from './services/data.service';
 
 @Module({
   providers: [DataService],

@@ -1,17 +1,17 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { join } from 'path';
-import { parseCsvFile } from './functions/parse-csv-file.function';
-import { parseXlsxFile } from './functions/parse-xlsx-file.function';
-import { SAMPLE_PROSPECT_FIRMS } from './sample-prospect-firms.const';
-import { mergeSampleProspects } from './functions/merge-sample-prospects.function';
-import { inferProspectFromEnrichment } from './functions/infer-prospect-from-enrichment.function';
-import { normalizeProspectRow } from './functions/normalize-prospect-row.function';
-import { SAMPLE_ENRICHMENT_SIGNALS } from './sample-enrichment-signals.const';
-import { SAMPLE_INTERACTION_HISTORY } from './sample-interaction-history.const';
-import { ProspectFirmRow } from '../firms/types/prospect-firm-row.interface';
-import { EnrichmentSignalRow } from '../firms/types/enrichment-signal-row.interface';
-import { InteractionHistoryRow } from '../firms/types/interaction-history-row.interface';
-import { doFirmNamesMatch } from './functions/do-firm-names-match.function';
+import { parseCsvFile } from '../functions/parse-csv-file.function';
+import { parseXlsxFile } from '../functions/parse-xlsx-file.function';
+import { SAMPLE_PROSPECT_FIRMS } from '../sample-prospect-firms.const';
+import { mergeSampleProspects } from '../functions/merge-sample-prospects.function';
+import { inferProspectFromEnrichment } from '../functions/infer-prospect-from-enrichment.function';
+import { normalizeProspectRow } from '../functions/normalize-prospect-row.function';
+import { SAMPLE_ENRICHMENT_SIGNALS } from '../sample-enrichment-signals.const';
+import { SAMPLE_INTERACTION_HISTORY } from '../sample-interaction-history.const';
+import { ProspectFirmRow } from '../../firms/types/prospect-firm-row.interface';
+import { EnrichmentSignalRow } from '../../firms/types/enrichment-signal-row.interface';
+import { InteractionHistoryRow } from '../../firms/types/interaction-history-row.interface';
+import { doFirmNamesMatch } from '../functions/do-firm-names-match.function';
 
 const DATA_DIR = join(process.cwd(), 'data');
 

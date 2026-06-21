@@ -6,14 +6,14 @@ export declare const envSchema: z.ZodObject<{
     NODE_ENV: z.ZodDefault<z.ZodEnum<["development", "production", "test"]>>;
     DATABASE_PATH: z.ZodDefault<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    PORT: number;
     PUBLIC_BASE_URL: string;
+    PORT: number;
     SLACK_SIGNING_SECRET: string;
     NODE_ENV: "development" | "production" | "test";
     DATABASE_PATH: string;
 }, {
-    PORT?: number | undefined;
     PUBLIC_BASE_URL?: string | undefined;
+    PORT?: number | undefined;
     SLACK_SIGNING_SECRET?: string | undefined;
     NODE_ENV?: "development" | "production" | "test" | undefined;
     DATABASE_PATH?: string | undefined;

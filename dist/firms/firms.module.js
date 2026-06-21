@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const data_module_1 = require("../data/data.module");
 const firm_lookup_service_1 = require("./services/firm-lookup.service");
 const firm_profile_builder_service_1 = require("./services/firm-profile-builder.service");
+const firms_controller_1 = require("./controllers/firms.controller");
 let FirmsModule = class FirmsModule {
 };
 exports.FirmsModule = FirmsModule;
@@ -19,6 +20,7 @@ exports.FirmsModule = FirmsModule = __decorate([
         imports: [data_module_1.DataModule],
         providers: [firm_profile_builder_service_1.FirmProfileBuilderService, firm_lookup_service_1.FirmLookupService],
         exports: [firm_lookup_service_1.FirmLookupService],
+        controllers: [firms_controller_1.FirmsController],
     })
 ], FirmsModule);
 //# sourceMappingURL=firms.module.js.map

@@ -13,7 +13,6 @@ const typeorm_1 = require("@nestjs/typeorm");
 const env_validation_1 = require("./config/env.validation");
 const data_module_1 = require("./data/data.module");
 const firms_module_1 = require("./firms/firms.module");
-const assets_module_1 = require("./assets/assets.module");
 const pages_module_1 = require("./pages/pages.module");
 const slack_module_1 = require("./slack/slack.module");
 const page_entity_1 = require("./pages/entities/page.entity");
@@ -40,7 +39,6 @@ exports.AppModule = AppModule = __decorate([
             }),
             data_module_1.DataModule,
             firms_module_1.FirmsModule,
-            assets_module_1.AssetsModule,
             pages_module_1.PagesModule,
             slack_module_1.SlackModule,
         ],

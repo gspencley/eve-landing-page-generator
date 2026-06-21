@@ -1,17 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ASSET_LIBRARY = void 0;
-exports.getAssetById = getAssetById;
-const asset_types_1 = require("./types/asset.types");
+const asset_type_enum_1 = require("./types/asset-type.enum");
+const asset_tag_enum_1 = require("./types/asset-tag.enum");
 exports.ASSET_LIBRARY = [
     {
         id: 'EVE-CS-001',
         title: 'How PI Firms Cut Demand Drafting Time by 75%',
-        type: asset_types_1.AssetType.CASE_STUDY,
+        type: asset_type_enum_1.AssetType.CASE_STUDY,
         description: 'See how a mid-size PI firm reduced demand letter turnaround from days to hours using Eve.',
         ctaLabel: 'Read case study',
         url: 'https://example.eve.legal/assets/demand-drafting-case-study',
-        tags: [asset_types_1.AssetTag.DEMAND_DRAFTING, asset_types_1.AssetTag.FILE_REVIEW],
+        tags: [asset_tag_enum_1.AssetTag.DEMAND_DRAFTING, asset_tag_enum_1.AssetTag.FILE_REVIEW],
         targetIndustries: ['Legal Services'],
         targetPracticeAreas: ['Personal Injury', 'Mass Tort'],
         targetFirmSizes: ['Mid-Market', 'Enterprise'],
@@ -25,11 +25,11 @@ exports.ASSET_LIBRARY = [
     {
         id: 'EVE-OP-001',
         title: 'After-Hours Intake Playbook for Plaintiff Firms',
-        type: asset_types_1.AssetType.ONE_PAGER,
+        type: asset_type_enum_1.AssetType.ONE_PAGER,
         description: 'Capture more qualified leads outside business hours without adding headcount.',
         ctaLabel: 'Download playbook',
         url: 'https://example.eve.legal/assets/after-hours-intake',
-        tags: [asset_types_1.AssetTag.INTAKE, asset_types_1.AssetTag.AFTER_HOURS],
+        tags: [asset_tag_enum_1.AssetTag.INTAKE, asset_tag_enum_1.AssetTag.AFTER_HOURS],
         targetIndustries: ['Legal Services'],
         targetPracticeAreas: ['Personal Injury', 'Employment Law'],
         targetFirmSizes: ['Small', 'Mid-Market', 'Enterprise'],
@@ -43,11 +43,11 @@ exports.ASSET_LIBRARY = [
     {
         id: 'EVE-WB-002',
         title: 'Live Demo: AI Intake Triage for High-Volume Firms',
-        type: asset_types_1.AssetType.WEBINAR,
+        type: asset_type_enum_1.AssetType.WEBINAR,
         description: 'Watch Eve route, qualify, and summarize inbound leads in real time.',
         ctaLabel: 'Watch webinar',
         url: 'https://example.eve.legal/assets/intake-triage-webinar',
-        tags: [asset_types_1.AssetTag.INTAKE, asset_types_1.AssetTag.CASE_EVALUATION],
+        tags: [asset_tag_enum_1.AssetTag.INTAKE, asset_tag_enum_1.AssetTag.CASE_EVALUATION],
         targetIndustries: ['Legal Services'],
         targetPracticeAreas: ['Personal Injury', 'Mass Tort'],
         targetFirmSizes: ['Enterprise', 'Mid-Market'],
@@ -61,11 +61,11 @@ exports.ASSET_LIBRARY = [
     {
         id: 'EVE-ROI-003',
         title: 'ROI Calculator: Eve vs. Manual File Review',
-        type: asset_types_1.AssetType.ROI_CALCULATOR,
+        type: asset_type_enum_1.AssetType.ROI_CALCULATOR,
         description: 'Model attorney hours saved and revenue impact based on your caseload.',
         ctaLabel: 'Calculate ROI',
         url: 'https://example.eve.legal/assets/roi-calculator',
-        tags: [asset_types_1.AssetTag.FILE_REVIEW, asset_types_1.AssetTag.DEMAND_DRAFTING],
+        tags: [asset_tag_enum_1.AssetTag.FILE_REVIEW, asset_tag_enum_1.AssetTag.DEMAND_DRAFTING],
         targetIndustries: ['Legal Services'],
         targetPracticeAreas: ['Personal Injury', 'Workers Comp', 'Nursing Home'],
         targetFirmSizes: ['Mid-Market', 'Enterprise'],
@@ -79,11 +79,11 @@ exports.ASSET_LIBRARY = [
     {
         id: 'EVE-DV-004',
         title: '2-Minute Product Tour: Eve for Litify Teams',
-        type: asset_types_1.AssetType.DEMO_VIDEO,
+        type: asset_type_enum_1.AssetType.DEMO_VIDEO,
         description: 'See Eve embedded in Litify workflows for intake and drafting.',
         ctaLabel: 'Watch demo',
         url: 'https://example.eve.legal/assets/litify-demo',
-        tags: [asset_types_1.AssetTag.LITIFY, asset_types_1.AssetTag.INTAKE, asset_types_1.AssetTag.DEMAND_DRAFTING],
+        tags: [asset_tag_enum_1.AssetTag.LITIFY, asset_tag_enum_1.AssetTag.INTAKE, asset_tag_enum_1.AssetTag.DEMAND_DRAFTING],
         targetIndustries: ['Legal Services'],
         targetPracticeAreas: ['Personal Injury', 'Mass Tort', 'Med Mal'],
         targetFirmSizes: ['Mid-Market', 'Enterprise'],
@@ -97,11 +97,11 @@ exports.ASSET_LIBRARY = [
     {
         id: 'EVE-WP-005',
         title: 'Whitepaper: Competing with EvenUp and Supio',
-        type: asset_types_1.AssetType.WHITEPAPER,
+        type: asset_type_enum_1.AssetType.WHITEPAPER,
         description: 'A buyer’s guide for plaintiff firms evaluating AI legal tech vendors.',
         ctaLabel: 'Get whitepaper',
         url: 'https://example.eve.legal/assets/competitive-guide',
-        tags: [asset_types_1.AssetTag.COMPETITOR_DISPLACEMENT, asset_types_1.AssetTag.FILE_REVIEW],
+        tags: [asset_tag_enum_1.AssetTag.COMPETITOR_DISPLACEMENT, asset_tag_enum_1.AssetTag.FILE_REVIEW],
         targetIndustries: ['Legal Services'],
         targetPracticeAreas: ['Personal Injury', 'Mass Tort'],
         targetFirmSizes: ['Small', 'Mid-Market', 'Enterprise'],
@@ -115,11 +115,11 @@ exports.ASSET_LIBRARY = [
     {
         id: 'EVE-CS-006',
         title: 'Mass Tort Case Study: Scaling Document Review',
-        type: asset_types_1.AssetType.CASE_STUDY,
+        type: asset_type_enum_1.AssetType.CASE_STUDY,
         description: 'How a national PI firm handled a mass tort docket without proportional headcount.',
         ctaLabel: 'Read case study',
         url: 'https://example.eve.legal/assets/mass-tort-case-study',
-        tags: [asset_types_1.AssetTag.MASS_TORT, asset_types_1.AssetTag.FILE_REVIEW],
+        tags: [asset_tag_enum_1.AssetTag.MASS_TORT, asset_tag_enum_1.AssetTag.FILE_REVIEW],
         targetIndustries: ['Legal Services'],
         targetPracticeAreas: ['Mass Tort', 'Personal Injury'],
         targetFirmSizes: ['Enterprise', 'Mid-Market'],
@@ -133,11 +133,11 @@ exports.ASSET_LIBRARY = [
     {
         id: 'EVE-HB-001',
         title: 'Nursing Home Abuse: Intake Qualification Guide',
-        type: asset_types_1.AssetType.ONE_PAGER,
+        type: asset_type_enum_1.AssetType.ONE_PAGER,
         description: 'Structured intake questions and red flags for nursing home abuse matters.',
         ctaLabel: 'Download guide',
         url: 'https://example.eve.legal/assets/nursing-home-intake',
-        tags: [asset_types_1.AssetTag.NURSING_HOME, asset_types_1.AssetTag.INTAKE, asset_types_1.AssetTag.CASE_EVALUATION],
+        tags: [asset_tag_enum_1.AssetTag.NURSING_HOME, asset_tag_enum_1.AssetTag.INTAKE, asset_tag_enum_1.AssetTag.CASE_EVALUATION],
         targetIndustries: ['Legal Services'],
         targetPracticeAreas: ['Nursing Home', 'Personal Injury'],
         targetFirmSizes: ['Small', 'Mid-Market'],
@@ -151,11 +151,11 @@ exports.ASSET_LIBRARY = [
     {
         id: 'EVE-BP-002',
         title: 'Trucking Litigation: Demand Package Template Pack',
-        type: asset_types_1.AssetType.ONE_PAGER,
+        type: asset_type_enum_1.AssetType.ONE_PAGER,
         description: 'Templates and checklists for trucking case demands and medical chronologies.',
         ctaLabel: 'Get templates',
         url: 'https://example.eve.legal/assets/trucking-templates',
-        tags: [asset_types_1.AssetTag.TRUCKING, asset_types_1.AssetTag.DEMAND_DRAFTING],
+        tags: [asset_tag_enum_1.AssetTag.TRUCKING, asset_tag_enum_1.AssetTag.DEMAND_DRAFTING],
         targetIndustries: ['Legal Services'],
         targetPracticeAreas: ['Personal Injury', 'Trucking'],
         targetFirmSizes: ['Mid-Market', 'Enterprise'],
@@ -169,11 +169,11 @@ exports.ASSET_LIBRARY = [
     {
         id: 'EVE-OP-004',
         title: 'Clio Integration Overview for Plaintiff Firms',
-        type: asset_types_1.AssetType.ONE_PAGER,
+        type: asset_type_enum_1.AssetType.ONE_PAGER,
         description: 'Connect Eve to Clio Grow and matter workflows in under a day.',
         ctaLabel: 'View integration guide',
         url: 'https://example.eve.legal/assets/clio-integration',
-        tags: [asset_types_1.AssetTag.CLIO, asset_types_1.AssetTag.INTAKE],
+        tags: [asset_tag_enum_1.AssetTag.CLIO, asset_tag_enum_1.AssetTag.INTAKE],
         targetIndustries: ['Legal Services'],
         targetPracticeAreas: ['Personal Injury', 'Employment Law', 'Workers Comp'],
         targetFirmSizes: ['Small', 'Mid-Market'],
@@ -187,11 +187,11 @@ exports.ASSET_LIBRARY = [
     {
         id: 'EVE-WB-003',
         title: 'Growth-Stage Firms: Building an AI-Ready Ops Stack',
-        type: asset_types_1.AssetType.WEBINAR,
+        type: asset_type_enum_1.AssetType.WEBINAR,
         description: 'Best practices for firms expanding headcount, offices, or practice areas.',
         ctaLabel: 'Register for webinar',
         url: 'https://example.eve.legal/assets/growth-webinar',
-        tags: [asset_types_1.AssetTag.GROWTH, asset_types_1.AssetTag.INTAKE, asset_types_1.AssetTag.FILE_REVIEW],
+        tags: [asset_tag_enum_1.AssetTag.GROWTH, asset_tag_enum_1.AssetTag.INTAKE, asset_tag_enum_1.AssetTag.FILE_REVIEW],
         targetIndustries: ['Legal Services'],
         targetPracticeAreas: ['Personal Injury', 'Mass Tort', 'Workers Comp'],
         targetFirmSizes: ['Enterprise', 'Mid-Market'],
@@ -205,11 +205,11 @@ exports.ASSET_LIBRARY = [
     {
         id: 'EVE-CS-007',
         title: 'Workers Comp Expansion: From Intake to Demand in One Platform',
-        type: asset_types_1.AssetType.CASE_STUDY,
+        type: asset_type_enum_1.AssetType.CASE_STUDY,
         description: 'How a regional firm launched workers comp with Eve-supported workflows.',
         ctaLabel: 'Read case study',
         url: 'https://example.eve.legal/assets/workers-comp-case-study',
-        tags: [asset_types_1.AssetTag.WORKERS_COMP, asset_types_1.AssetTag.INTAKE, asset_types_1.AssetTag.DEMAND_DRAFTING],
+        tags: [asset_tag_enum_1.AssetTag.WORKERS_COMP, asset_tag_enum_1.AssetTag.INTAKE, asset_tag_enum_1.AssetTag.DEMAND_DRAFTING],
         targetIndustries: ['Legal Services'],
         targetPracticeAreas: ['Workers Comp', 'Personal Injury'],
         targetFirmSizes: ['Mid-Market', 'Small'],
@@ -221,7 +221,4 @@ exports.ASSET_LIBRARY = [
         baseWeight: 7,
     },
 ];
-function getAssetById(id) {
-    return exports.ASSET_LIBRARY.find((asset) => asset.id === id);
-}
 //# sourceMappingURL=asset-library.js.map

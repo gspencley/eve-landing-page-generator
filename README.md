@@ -6,6 +6,16 @@ Given a firm name from a Slack slash command, the app looks up prospect/enrichme
 
 ## Quick start
 
+Install node v24.16.0
+I recommend using nvm https://github.com/nvm-sh/nvm
+```bash
+nvm install 24.16.0
+nvm use 24.16.0
+node --version
+```
+
+Copy the example environment file to .env, install dependencies and run:
+
 ```bash
 cp .env.example .env
 npm install
@@ -18,6 +28,25 @@ Verify locally:
 - `GET http://localhost:3000/admin/pages` → JSON list of generated pages
 - `GET http://localhost:3000/p/sample-firm` → server-rendered sample landing page
 
+For local testing of the Slack integration, install `ngrok`
+
+```bash
+ngork config add-authtoken $YOUR_AUTHTOKEN
+ngrok http 3000
+```
+
+Then create a Slack app, give it the `/landing-page` slash command, configure it to hit the `/commands/slack` endpoint, publish your app and try it out. 
+
+## What I Would Have Implemented Given More Time
+
+- Something a bit more flexible / extensible than the `scoreAsset()` function. Scoring prospects and choosing assets is the core set of business rules that this application implements. This is something that the Marketing Team will constantly want to tweak and play with. Although I did split the implementation of that function up into reusable blocks, it would be nice if it were easier for developers to add new scoring metrics/criteria or change existing ones. The Chain of Responsibility Pattern could serve us well here. Different scoring criteria could then be added/removed very easily, and there would be strong separation of concerns between the various "score-ers." 
+- Introduce a Database Access Layer with custom repository implementations. Services are currently using TypeORM's `@InjectRepository()` decorator directly which is fine for a first pass but it couples the services layer directly to the ORM and the instant we need custom queries or more domain-specific functionality at the persistence layer, we risk seeing developers squeeze persistence responsibilities into the services layer where it doesn't belong.
+- Unit tests for the ORM config. I implemented unit tests for business logic but because TypeORM uses decorators on the entity classes, any changes to those classes risks introducing regressions and, therefore, unit testing the ORM mapping is a good idea.
+- Less than dummy assets. The assets that can be grabbed right now are basically "cards." I would like to throw images, animations and other "widgets" and stuff in the mix. For some prospects, having interactive assets, such as a calculator or something, would be cool.
+- Web components for the landing pages. I assume that we want brand consistency across our various offerings. The landing pages could use a web components library developed in-house that our public facing website would also use and possibly our core platform as well.
+- End-to-end tests to make sure that the entire flow is working correctly and to safeguard against regressions as the app evolves.
+- Authentication. This is a proof of concept and not production ready. All endpoints are publicly accessible except for the Slack integration when run in production mode.
+
 ## Assessment data (`/data`)
 
 **Place the real take-home spreadsheets in the project `/data` folder:**
@@ -28,11 +57,9 @@ Verify locally:
 | `enrichment_signals.csv` | Tech stack, competitor mentions, growth signals |
 | `interaction_history.csv` | Outreach history, bounced events, previously sent assets |
 
-These files are **not imported into the database**. They are read at runtime from disk.
-
 If `prospect_firms.xlsx` is missing, the app derives prospect rows from `enrichment_signals.csv`. If CSV/XLSX files are absent entirely, built-in sample data is used so the app still runs locally.
 
-The SQLite database (`DATABASE_PATH`, default `./data/app.sqlite`) stores **app-generated data only**:
+A SQLite database (`DATABASE_PATH`, default `./data/app.sqlite`) is used to store app-generated data:
 
 - Generated landing pages
 - Selected assets and scoring explanations
@@ -115,7 +142,7 @@ curl -X POST http://localhost:3000/events \
 Slack (/generate-page)
     → FirmLookupService (normalize + fuzzy match)
     → DataService (CSV/XLSX from /data)
-    → AssetMatcherService (weighted scoring)
+    → matchAssets() (weighted scoring function)
     → PageGenerationService (persist to SQLite)
     → Handlebars landing page (/p/:slug)
     → Analytics (POST /events)

@@ -11,6 +11,7 @@ import { SAMPLE_INTERACTION_HISTORY } from './sample-interaction-history.const';
 import { ProspectFirmRow } from '../firms/types/prospect-firm-row.interface';
 import { EnrichmentSignalRow } from '../firms/types/enrichment-signal-row.interface';
 import { InteractionHistoryRow } from '../firms/types/interaction-history-row.interface';
+import { doFirmNamesMatch } from './functions/do-firm-names-match.function';
 
 const DATA_DIR = join(process.cwd(), 'data');
 
@@ -26,10 +27,6 @@ export class DataService implements OnModuleInit {
     this.loadAll();
   }
 
-  reload(): void {
-    this.loadAll();
-  }
-
   getProspectFirms(): ProspectFirmRow[] {
     return this.prospectFirms;
   }
@@ -40,6 +37,19 @@ export class DataService implements OnModuleInit {
 
   getInteractionHistory(): InteractionHistoryRow[] {
     return this.interactionHistory;
+  }
+
+  findEnrichmentsByFirmName(firmName: string): EnrichmentSignalRow | null {
+    return (
+      this.getEnrichmentSignals().find((signal) => doFirmNamesMatch(firmName, signal.firm_name)) ??
+      null
+    );
+  }
+
+  findInteractionsByFirmName(firmName: string): InteractionHistoryRow[] {
+    return this.getInteractionHistory().filter((interaction) =>
+      doFirmNamesMatch(firmName, interaction.firm_name),
+    );
   }
 
   private loadAll(): void {

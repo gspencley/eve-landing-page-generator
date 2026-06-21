@@ -18,6 +18,7 @@ const infer_prospect_from_enrichment_function_1 = require("./functions/infer-pro
 const normalize_prospect_row_function_1 = require("./functions/normalize-prospect-row.function");
 const sample_enrichment_signals_const_1 = require("./sample-enrichment-signals.const");
 const sample_interaction_history_const_1 = require("./sample-interaction-history.const");
+const do_firm_names_match_function_1 = require("./functions/do-firm-names-match.function");
 const DATA_DIR = (0, path_1.join)(process.cwd(), 'data');
 let DataService = DataService_1 = class DataService {
     constructor() {
@@ -29,9 +30,6 @@ let DataService = DataService_1 = class DataService {
     onModuleInit() {
         this.loadAll();
     }
-    reload() {
-        this.loadAll();
-    }
     getProspectFirms() {
         return this.prospectFirms;
     }
@@ -40,6 +38,13 @@ let DataService = DataService_1 = class DataService {
     }
     getInteractionHistory() {
         return this.interactionHistory;
+    }
+    findEnrichmentsByFirmName(firmName) {
+        return (this.getEnrichmentSignals().find((signal) => (0, do_firm_names_match_function_1.doFirmNamesMatch)(firmName, signal.firm_name)) ??
+            null);
+    }
+    findInteractionsByFirmName(firmName) {
+        return this.getInteractionHistory().filter((interaction) => (0, do_firm_names_match_function_1.doFirmNamesMatch)(firmName, interaction.firm_name));
     }
     loadAll() {
         this.prospectFirms = this.loadProspectFirms();

@@ -8,10 +8,11 @@ export declare class DataService implements OnModuleInit {
     private enrichmentSignals;
     private interactionHistory;
     onModuleInit(): void;
-    reload(): void;
     getProspectFirms(): ProspectFirmRow[];
     getEnrichmentSignals(): EnrichmentSignalRow[];
     getInteractionHistory(): InteractionHistoryRow[];
+    findEnrichmentsByFirmName(firmName: string): EnrichmentSignalRow | null;
+    findInteractionsByFirmName(firmName: string): InteractionHistoryRow[];
     private loadAll;
     private loadProspectFirms;
     private loadEnrichmentSignals;

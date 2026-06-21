@@ -22,3 +22,5 @@ yarn-error.log*
 /data/prospect_firms.xlsx
 
 .DS_Store
+
+.env

@@ -57,38 +57,7 @@ curl http://localhost:3000/firms
 
 For Slack testing, see [Expose locally with ngrok](#expose-locally-with-ngrok-for-slack-testing) below.
 
-## What I Would Have Implemented Given More Time
 
-- Something a bit more flexible / extensible than the `matchAssets()` function. Scoring prospects and choosing assets is the core set of business rules that this application implements. This is something that the Marketing Team will constantly want to tweak and play with. Although I did split the implementation of that function up into reusable blocks, it would be nice if it were easier for developers to add new scoring metrics/criteria or change existing ones. The Chain of Responsibility Pattern could serve us well here. Different scoring criteria could then be added/removed very easily, and there would be strong separation of concerns between the various "score-ers."
-- Introduce a Database Access Layer with custom repository implementations. Services are currently using TypeORM's `@InjectRepository()` decorator directly which is fine for a first pass but it couples the services layer directly to the ORM and the instant we need custom queries or more domain-specific functionality at the persistence layer, we risk seeing developers squeeze persistence responsibilities into the services layer where it doesn't belong.
-- Unit tests for the ORM config. I implemented unit tests for business logic but because TypeORM uses decorators on the entity classes, any changes to those classes risks introducing regressions and, therefore, unit testing the ORM mapping is a good idea.
-- Less than dummy assets. The assets that can be grabbed right now are basically "cards." I would like to throw images, animations and other "widgets" and stuff in the mix. For some prospects, having interactive assets, such as a calculator or something, would be cool.
-- Web components for the landing pages. I assume that we want brand consistency across our various offerings. The landing pages could use a web components library developed in-house that our public facing website would also use and possibly our core platform as well.
-- End-to-end tests to make sure that the entire flow is working correctly and to safeguard against regressions as the app evolves.
-- Authentication. This is a proof of concept and not production ready. All endpoints are publicly accessible except for the Slack integration when run in production mode.
-- Add a git commit hook to auto-fix lint errors
-- Idempotent Slack retry handling (`trigger_id` dedupe)
-- Regenerate/update pages when source files change
-- Form submit capture on landing page CTA flow
-- Production hardening (migrations, structured logging, rate limits)
-
-## Assessment data (`/data`)
-
-Place the spreadsheets in the project `/data` folder:
-
-| File | Purpose |
-|------|---------|
-| `prospect_firms.xlsx` | Firm attributes (industry, practice area, size, intake, pain points, CMS, lead status) |
-| `enrichment_signals.csv` | Tech stack, competitor mentions, growth signals |
-| `interaction_history.csv` | Outreach history, bounced events, previously sent assets |
-
-If `prospect_firms.xlsx` is missing, the app derives prospect rows from `enrichment_signals.csv`. If CSV/XLSX files are absent entirely, built-in sample data is used so the app still runs locally.
-
-A SQLite database (`DATABASE_PATH`, default `./data/app.sqlite`) stores app-generated data:
-
-- Generated landing pages
-- Selected assets and scoring explanations
-- Page analytics events
 
 ## Environment variables
 
@@ -135,6 +104,104 @@ Flow:
    - **Basic Information** → copy **Signing Secret** → set `SLACK_SIGNING_SECRET` in `.env`
 6. Restart the app after changing env vars
 
+## Assessment data (`/data`)
+
+Place the spreadsheets in the project `/data` folder:
+
+| File | Purpose |
+|------|---------|
+| `prospect_firms.xlsx` | Firm attributes (industry, practice area, size, intake, pain points, CMS, lead status) |
+| `enrichment_signals.csv` | Tech stack, competitor mentions, growth signals |
+| `interaction_history.csv` | Outreach history, bounced events, previously sent assets |
+
+If `prospect_firms.xlsx` is missing, the app derives prospect rows from `enrichment_signals.csv`. If CSV/XLSX files are absent entirely, built-in sample data is used so the app still runs locally.
+
+A SQLite database (`DATABASE_PATH`, default `./data/app.sqlite`) stores app-generated data:
+
+- Generated landing pages
+- Selected assets and scoring explanations
+- Page analytics events
+
+## How Asset Matching Works & Why
+
+Assets are selected with a **deterministic weighted score** (highest scores win; top 3 are shown).
+
+Scoring inputs:
+
+| Signal | Weighting approach |
+|--------|-------------------|
+| Industry / practice area / firm size | Direct attribute match (+3 to +6) |
+| Intake method / CMS / lead status | Direct attribute match (+3 to +5) |
+| Pain points | Keyword match against firm pain points (+5 each) |
+| Enrichment signals | Keyword match on news, hiring, growth, competitor mentions (+4 to +6) |
+| Base asset relevance | Per-asset `baseWeight` (+7 to +11) |
+
+Penalties:
+
+- **Previously sent asset** (−25): asset ID appears in interaction history for the firm
+- **Bounced outreach** (−8): firm has ≥2 bounced interactions (softer top-of-funnel bias)
+
+Each asset receives a **scoring explanation** (reasons + penalties) persisted on the generated page for transparency.
+
+I went with this approach because it is:
+
+- Simple, easy to test and easy to change
+- It matches information in the firm's profile with keywords in the asset
+- It is extremely easy to tweak. Each asset and each category can have their weights tweaked so if the business wants score something like target industry higher than pain points or vice versa, it's easy to change the weighting.
+
+## Architecture
+
+I went with a Node framework called NestJS, an ORM called TypeORM and opted for server-side rendering with Handlebars for a templating language.
+
+I chose these frameworks because I am familiar with them and I like them a lot. NestJS uses a lot of conventional design patterns found in frameworks like SpringMVC. You've got your basic MVC paradigm with a front controller and an ioc framework so it's very quick to get up and running. TypeORM reminds me of Hibernate. It let me persist generated pages and analytics events to a SQLite database with very little upfront work.
+
+Sever-side rendering was chosen for SEO, simplicity and performance. If we want something more interactive, like maybe the onboarding flow could be integrated right into these landing pages, I might opt for client side rendering. If server-side compute costs is a problem for the business, if we had millions of prospects and were generating pages to an insane degree, that might be another reason to go client-side rendering but that seems unlikely.
+
+The /generate-page command hits the /slack/commands endpoint
+
+That endpoint's controller is wired up in `SlackController.handleSlashCommand()`
+
+That controller calls into SlackSignatureService to do basic signature verification.
+
+It then calls `SlackResponseBuilderService.generateAndRespond()` which calls `PageGenerationService.generatePageForFirm()`
+
+That calls into `FirmLookUpService` which
+
+- tries to find the firm in the spreadsheets
+- then calls `matchAssets` which is our asset scoring function (explained above)
+- returns a `FirmLookupResult` object with the firm profile, complete with the matched assets, and some metadata that provides the matched name and a confidence score (see Firm Lookup below)
+
+`SlackResponseBuilderService` then generates a `SlackImmediateResponse` and sends a POST request to the Slack response url
+
+If no response URL was provided in the request, then the controller calls `SlackResponseBuilderService.generateSync()` which does all of the above but synchronously, returning an immediate response.
+
+Basic execution flow:
+
+```
+Slack (/generate-page)
+    → FirmLookupService (normalize + fuzzy match)
+    → DataService (CSV/XLSX from /data)
+    → matchAssets() (weighted scoring function)
+    → PageGenerationService (persist to SQLite)
+    → Handlebars landing page (/p/:slug)
+    → Analytics (POST /events)
+```
+
+## What I Would Have Implemented Given More Time
+
+- Something a bit more flexible / extensible than the `matchAssets()` function. Scoring prospects and choosing assets is the core set of business rules that this application implements. This is something that the Marketing Team will constantly want to tweak and play with. Although I did split the implementation of that function up into reusable blocks, it would be nice if it were easier for developers to add new scoring metrics/criteria or change existing ones. The Chain of Responsibility Pattern could serve us well here. Different scoring criteria could then be added/removed very easily, and there would be strong separation of concerns between the various "score-ers."
+- Introduce a Database Access Layer with custom repository implementations. Services are currently using TypeORM's `@InjectRepository()` decorator directly which is fine for a first pass but it couples the services layer directly to the ORM and the instant we need custom queries or more domain-specific functionality at the persistence layer, we risk seeing developers squeeze persistence responsibilities into the services layer where it doesn't belong.
+- Unit tests for the ORM config. I implemented unit tests for business logic but because TypeORM uses decorators on the entity classes, any changes to those classes risks introducing regressions and, therefore, unit testing the ORM mapping is a good idea.
+- Less than dummy assets. The assets that can be grabbed right now are basically "cards." I would like to throw images, animations and other "widgets" and stuff in the mix. For some prospects, having interactive assets, such as a calculator or something, would be cool.
+- Web components for the landing pages. I assume that we want brand consistency across our various offerings. The landing pages could use a web components library developed in-house that our public facing website would also use and possibly our core platform as well.
+- End-to-end tests to make sure that the entire flow is working correctly and to safeguard against regressions as the app evolves.
+- Authentication. This is a proof of concept and not production ready. All endpoints are publicly accessible except for the Slack integration when run in production mode.
+- Add a git commit hook to auto-fix lint errors
+- Idempotent Slack retry handling (`trigger_id` dedupe)
+- Regenerate/update pages when source files change
+- Form submit capture on landing page CTA flow
+- Production hardening (migrations, structured logging, rate limits)
+
 ## API overview
 
 | Method | Path | Description |
@@ -164,18 +231,6 @@ curl -X POST http://localhost:3000/events \
   -d '{"pageId":"<id>","eventType":"cta_click"}'
 ```
 
-## Architecture
-
-```
-Slack (/generate-page)
-    → FirmLookupService (normalize + fuzzy match)
-    → DataService (CSV/XLSX from /data)
-    → matchAssets() (weighted scoring function)
-    → PageGenerationService (persist to SQLite)
-    → Handlebars landing page (/p/:slug)
-    → Analytics (POST /events)
-```
-
 ### Modules
 
 - **`data/`** — File parsers, normalization, runtime data loading
@@ -185,27 +240,6 @@ Slack (/generate-page)
 - **`slack/`** — Signature verification and slash command handler
 - **`views/`** — Handlebars layouts and landing page template
 - **`public/`** — Static CSS and client-side analytics script
-
-## Asset matching
-
-Assets are selected with a **deterministic weighted score** (highest scores win; top 3 are shown).
-
-Scoring inputs:
-
-| Signal | Weighting approach |
-|--------|-------------------|
-| Industry / practice area / firm size | Direct attribute match (+3 to +6) |
-| Intake method / CMS / lead status | Direct attribute match (+3 to +5) |
-| Pain points | Keyword match against firm pain points (+5 each) |
-| Enrichment signals | Keyword match on news, hiring, growth, competitor mentions (+4 to +6) |
-| Base asset relevance | Per-asset `baseWeight` (+7 to +11) |
-
-Penalties:
-
-- **Previously sent asset** (−25): asset ID appears in interaction history for the firm
-- **Bounced outreach** (−8): firm has ≥2 bounced interactions (softer top-of-funnel bias)
-
-Each asset receives a **scoring explanation** (reasons + penalties) persisted on the generated page for transparency.
 
 ## Firm lookup
 

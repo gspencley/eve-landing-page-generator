@@ -12,11 +12,13 @@ yarn-error.log*
 /.idea
 /.cursor
 
-dist/*.csv
-dist/*.xlsx
-dist/app.sqlite
-
 .vscode/*
 .idea/*
 .cursor/*
 /dist/
+/data/app.sqlite
+/data/enrichment_signals.csv
+/data/interaction_history.csv
+/data/prospect_firms.xlsx
+
+.DS_Store

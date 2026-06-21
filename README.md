@@ -6,15 +6,15 @@ Given a firm name from a Slack slash command, the app looks up prospect/enrichme
 
 ## Quick start
 
-Install node v24.16.0
-I recommend using nvm https://github.com/nvm-sh/nvm
+Node 20+ recommended. I used v24.16.0 via [nvm](https://github.com/nvm-sh/nvm):
+
 ```bash
 nvm install 24.16.0
 nvm use 24.16.0
 node --version
 ```
 
-Copy the example environment file to .env, install dependencies and run:
+Copy the example environment file to `.env`, install dependencies, and run:
 
 ```bash
 cp .env.example .env
@@ -28,18 +28,38 @@ Verify locally:
 - `GET http://localhost:3000/admin/pages` → JSON list of generated pages
 - `GET http://localhost:3000/p/sample-firm` → server-rendered sample landing page
 
-For local testing of the Slack integration, install `ngrok`
+### Generate a page without Slack
+
+Useful for local testing before wiring up Slack:
 
 ```bash
-ngork config add-authtoken $YOUR_AUTHTOKEN
-ngrok http 3000
+curl -X POST http://localhost:3000/slack/commands \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  --data-urlencode 'command=/generate-page' \
+  --data-urlencode 'text=Cellino Law'
 ```
 
-Then create a Slack app, give it the `/landing-page` slash command, configure it to hit the `/commands/slack` endpoint, publish your app and try it out. 
+Then open the URL from the JSON response, or visit `/p/cellino-law` directly.
+
+To see which firm names are available:
+
+```bash
+curl http://localhost:3000/firms
+```
+
+### Demo flow (no Slack required)
+
+1. `npm run start:dev`
+2. Generate a page with the curl command above (try `Cellino Law`, `Davis Law Group`, or `Sample Firm`)
+3. Open the returned URL in a browser
+4. Click an asset link or the demo CTA
+5. Inspect recorded events: `curl http://localhost:3000/admin/events`
+
+For Slack testing, see [Expose locally with ngrok](#expose-locally-with-ngrok-for-slack-testing) below.
 
 ## What I Would Have Implemented Given More Time
 
-- Something a bit more flexible / extensible than the `matchAssets()` function. Scoring prospects and choosing assets is the core set of business rules that this application implements. This is something that the Marketing Team will constantly want to tweak and play with. Although I did split the implementation of that function up into reusable blocks, it would be nice if it were easier for developers to add new scoring metrics/criteria or change existing ones. The Chain of Responsibility Pattern could serve us well here. Different scoring criteria could then be added/removed very easily, and there would be strong separation of concerns between the various "score-ers." 
+- Something a bit more flexible / extensible than the `matchAssets()` function. Scoring prospects and choosing assets is the core set of business rules that this application implements. This is something that the Marketing Team will constantly want to tweak and play with. Although I did split the implementation of that function up into reusable blocks, it would be nice if it were easier for developers to add new scoring metrics/criteria or change existing ones. The Chain of Responsibility Pattern could serve us well here. Different scoring criteria could then be added/removed very easily, and there would be strong separation of concerns between the various "score-ers."
 - Introduce a Database Access Layer with custom repository implementations. Services are currently using TypeORM's `@InjectRepository()` decorator directly which is fine for a first pass but it couples the services layer directly to the ORM and the instant we need custom queries or more domain-specific functionality at the persistence layer, we risk seeing developers squeeze persistence responsibilities into the services layer where it doesn't belong.
 - Unit tests for the ORM config. I implemented unit tests for business logic but because TypeORM uses decorators on the entity classes, any changes to those classes risks introducing regressions and, therefore, unit testing the ORM mapping is a good idea.
 - Less than dummy assets. The assets that can be grabbed right now are basically "cards." I would like to throw images, animations and other "widgets" and stuff in the mix. For some prospects, having interactive assets, such as a calculator or something, would be cool.
@@ -54,7 +74,7 @@ Then create a Slack app, give it the `/landing-page` slash command, configure it
 
 ## Assessment data (`/data`)
 
-**Place the real take-home spreadsheets in the project `/data` folder:**
+Place the spreadsheets in the project `/data` folder:
 
 | File | Purpose |
 |------|---------|
@@ -64,7 +84,7 @@ Then create a Slack app, give it the `/landing-page` slash command, configure it
 
 If `prospect_firms.xlsx` is missing, the app derives prospect rows from `enrichment_signals.csv`. If CSV/XLSX files are absent entirely, built-in sample data is used so the app still runs locally.
 
-A SQLite database (`DATABASE_PATH`, default `./data/app.sqlite`) is used to store app-generated data:
+A SQLite database (`DATABASE_PATH`, default `./data/app.sqlite`) stores app-generated data:
 
 - Generated landing pages
 - Selected assets and scoring explanations
@@ -83,6 +103,8 @@ DATABASE_PATH=./data/app.sqlite
 ```
 
 `SLACK_SIGNING_SECRET` is required in production. In development, signature verification is skipped when the secret is empty (local-demo friendly).
+
+When testing through ngrok, set `PUBLIC_BASE_URL` to your ngrok HTTPS URL so generated page links and client-side analytics requests resolve correctly.
 
 ## Slack integration
 
@@ -109,7 +131,7 @@ Flow:
    PUBLIC_BASE_URL=https://abc123.ngrok-free.app
    ```
 5. In [Slack API app settings](https://api.slack.com/apps):
-   - **Slash Commands** → Request URL: `https://abc123.ngrok-free.app/slack/commands`
+   - **Slash Commands** → create `/generate-page` with Request URL: `https://abc123.ngrok-free.app/slack/commands`
    - **Basic Information** → copy **Signing Secret** → set `SLACK_SIGNING_SECRET` in `.env`
 6. Restart the app after changing env vars
 
@@ -119,6 +141,7 @@ Flow:
 |--------|------|-------------|
 | GET | `/health` | Health check |
 | POST | `/slack/commands` | Slack slash command handler |
+| GET | `/firms` | List available firm names from prospect data |
 | GET | `/p/:slug` | Server-rendered landing page |
 | POST | `/events` | Record analytics event |
 | GET | `/admin/pages` | List generated pages (JSON) |
@@ -128,10 +151,10 @@ Flow:
 
 Supported `eventType` values:
 
-- `page_view` (recorded server-side on page load)
+- `page_view` (recorded client-side on `body` load via `/js/landing-page-analytics.js`)
 - `asset_click`
 - `cta_click`
-- `form_submit`
+- `form_submit` (supported by the API; not yet emitted by the landing page UI)
 
 Example:
 
@@ -161,6 +184,7 @@ Slack (/generate-page)
 - **`pages/`** — TypeORM entities, page generation, landing + admin controllers
 - **`slack/`** — Signature verification and slash command handler
 - **`views/`** — Handlebars layouts and landing page template
+- **`public/`** — Static CSS and client-side analytics script
 
 ## Asset matching
 
@@ -201,21 +225,25 @@ Useful errors are returned when no match is found, including up to 5 suggestions
 - Asset library URLs are placeholders (`example.eve.legal`)
 - SQLite `synchronize: true` is enabled outside production for local development
 - No authentication on admin endpoints yet (local demo scope)
+- Hero copy is template-based from firm pain points, not LLM-generated
+- Re-requesting a page for the same firm returns the existing page (stable slug)
 
 ## Tradeoffs
 
 - **File-based source data vs DB import:** Keeps assessment data easy to swap without migrations; tradeoff is no SQL joins across prospects and pages
 - **Deterministic matcher vs ML:** Explainable and testable; tradeoff is manual tag maintenance in the asset library
 - **Slack async via `response_url`:** Meets Slack’s 3-second ack window; tradeoff is slightly more moving parts than synchronous-only
-- **Derive prospects from enrichment CSV:** Unblocks local dev without `prospect_firms.xlsx`; tradeoff is inferred attributes may differ from official prospect sheet
-- **Server Side Rendering** chosen for SEO, performance and simplicity. We incur rendering costs and if we ever want landing pages that are more feature-rich, interactive etc. then our FE devs would miss the benefits of client-side component frameworks like React / Angular.
- 
+- **Derive prospects from enrichment CSV:** Unblocks local dev without `prospect_firms.xlsx`; tradeoff is inferred attributes may differ from the prospect spreadsheet
+- **Server-side rendering:** Chosen for SEO, performance, and simplicity. We incur rendering costs and if we ever want landing pages that are more feature-rich or interactive, our FE devs would miss the benefits of client-side component frameworks like React or Angular
+
 ## Scripts
 
 ```bash
 npm run start:dev   # watch mode
 npm run build       # compile to dist/
 npm run start       # run compiled app
+npm test            # unit tests (matching, parsers, firm lookup, etc.)
+npm run test:watch  # run tests in watch mode
 npm run lint        # ESLint
 npm run format      # Prettier
 ```

@@ -1,6 +1,5 @@
-const root = document.querySelector('[data-page-id]');
-const pageId = root?.dataset.pageId;
-const baseUrl = root?.dataset.publicBaseUrl;
+const pageId = document.body.dataset.pageId;
+const baseUrl = document.body.dataset.publicBaseUrl;
 
 if (pageId && baseUrl) {
   const track = (eventType, assetId, metadata) => {
@@ -15,6 +14,8 @@ if (pageId && baseUrl) {
       }),
     }).catch(() => {});
   };
+
+  document.body.onload = () => track('page_view');
 
   document.querySelectorAll('.asset-link').forEach((link) => {
     link.addEventListener('click', () => {

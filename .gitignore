@@ -8,12 +8,14 @@ yarn-error.log*
 /.pnp
 .pnp.js
 
-/dist
 /.vscode
 /.idea
 /.cursor
 
-dist/*
+dist/*.csv
+dist/*.xlsx
+dist/app.sqlite
+
 .vscode/*
 .idea/*
 .cursor/*

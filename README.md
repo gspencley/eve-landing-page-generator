@@ -39,7 +39,7 @@ Then create a Slack app, give it the `/landing-page` slash command, configure it
 
 ## What I Would Have Implemented Given More Time
 
-- Something a bit more flexible / extensible than the `scoreAsset()` function. Scoring prospects and choosing assets is the core set of business rules that this application implements. This is something that the Marketing Team will constantly want to tweak and play with. Although I did split the implementation of that function up into reusable blocks, it would be nice if it were easier for developers to add new scoring metrics/criteria or change existing ones. The Chain of Responsibility Pattern could serve us well here. Different scoring criteria could then be added/removed very easily, and there would be strong separation of concerns between the various "score-ers." 
+- Something a bit more flexible / extensible than the `matchAssets()` function. Scoring prospects and choosing assets is the core set of business rules that this application implements. This is something that the Marketing Team will constantly want to tweak and play with. Although I did split the implementation of that function up into reusable blocks, it would be nice if it were easier for developers to add new scoring metrics/criteria or change existing ones. The Chain of Responsibility Pattern could serve us well here. Different scoring criteria could then be added/removed very easily, and there would be strong separation of concerns between the various "score-ers." 
 - Introduce a Database Access Layer with custom repository implementations. Services are currently using TypeORM's `@InjectRepository()` decorator directly which is fine for a first pass but it couples the services layer directly to the ORM and the instant we need custom queries or more domain-specific functionality at the persistence layer, we risk seeing developers squeeze persistence responsibilities into the services layer where it doesn't belong.
 - Unit tests for the ORM config. I implemented unit tests for business logic but because TypeORM uses decorators on the entity classes, any changes to those classes risks introducing regressions and, therefore, unit testing the ORM mapping is a good idea.
 - Less than dummy assets. The assets that can be grabbed right now are basically "cards." I would like to throw images, animations and other "widgets" and stuff in the mix. For some prospects, having interactive assets, such as a calculator or something, would be cool.
@@ -47,6 +47,10 @@ Then create a Slack app, give it the `/landing-page` slash command, configure it
 - End-to-end tests to make sure that the entire flow is working correctly and to safeguard against regressions as the app evolves.
 - Authentication. This is a proof of concept and not production ready. All endpoints are publicly accessible except for the Slack integration when run in production mode.
 - Add a git commit hook to auto-fix lint errors
+- Idempotent Slack retry handling (`trigger_id` dedupe)
+- Regenerate/update pages when source files change
+- Form submit capture on landing page CTA flow
+- Production hardening (migrations, structured logging, rate limits)
 
 ## Assessment data (`/data`)
 
@@ -204,16 +208,8 @@ Useful errors are returned when no match is found, including up to 5 suggestions
 - **Deterministic matcher vs ML:** Explainable and testable; tradeoff is manual tag maintenance in the asset library
 - **Slack async via `response_url`:** Meets Slack’s 3-second ack window; tradeoff is slightly more moving parts than synchronous-only
 - **Derive prospects from enrichment CSV:** Unblocks local dev without `prospect_firms.xlsx`; tradeoff is inferred attributes may differ from official prospect sheet
-
-## Next steps
-
-- [ ] Add authentication for `/admin/*` routes
-- [ ] Idempotent Slack retry handling (`trigger_id` dedupe)
-- [ ] Regenerate/update pages when source files change
-- [ ] Unit tests for normalization, matching, and signature verification
-- [ ] Form submit capture on landing page CTA flow
-- [ ] Production hardening (migrations, structured logging, rate limits)
-
+- **Server Side Rendering** chosen for SEO, performance and simplicity. We incur rendering costs and if we ever want landing pages that are more feature-rich, interactive etc. then our FE devs would miss the benefits of client-side component frameworks like React / Angular.
+ 
 ## Scripts
 
 ```bash

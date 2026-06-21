@@ -1,0 +1,30 @@
+const root = document.querySelector('[data-page-id]');
+const pageId = root?.dataset.pageId;
+const baseUrl = root?.dataset.publicBaseUrl;
+
+if (pageId && baseUrl) {
+  const track = (eventType, assetId, metadata) => {
+    fetch(`${baseUrl}/events`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        pageId,
+        eventType,
+        ...(assetId ? { assetId } : {}),
+        ...(metadata ? { metadata } : {}),
+      }),
+    }).catch(() => {});
+  };
+
+  document.querySelectorAll('.asset-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      track('asset_click', link.dataset.assetId);
+    });
+  });
+
+  const cta = document.getElementById('primary-cta');
+  cta?.addEventListener('click', () => {
+    track('cta_click');
+    window.location.href = 'https://example.eve.legal/demo';
+  });
+}

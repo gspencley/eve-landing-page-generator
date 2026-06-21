@@ -22,6 +22,7 @@ async function bootstrap() {
   app.setViewEngine('hbs');
   hbs.registerPartials(join(viewsPath, 'layouts'));
   app.set('view options', { layout: 'layouts/main' });
+  app.useStaticAssets(join(__dirname, 'public'));
 
   await app.listen(env.PORT);
   console.log(`Eve landing page generator running on ${env.PUBLIC_BASE_URL}`);

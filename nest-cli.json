@@ -8,6 +8,10 @@
       {
         "include": "views/**/*",
         "outDir": "dist"
+      },
+      {
+        "include": "public/**/*",
+        "outDir": "dist"
       }
     ],
     "watchAssets": true

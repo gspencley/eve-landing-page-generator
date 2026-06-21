@@ -46,6 +46,7 @@ Then create a Slack app, give it the `/landing-page` slash command, configure it
 - Web components for the landing pages. I assume that we want brand consistency across our various offerings. The landing pages could use a web components library developed in-house that our public facing website would also use and possibly our core platform as well.
 - End-to-end tests to make sure that the entire flow is working correctly and to safeguard against regressions as the app evolves.
 - Authentication. This is a proof of concept and not production ready. All endpoints are publicly accessible except for the Slack integration when run in production mode.
+- Add a git commit hook to auto-fix lint errors
 
 ## Assessment data (`/data`)
 
